@@ -15,8 +15,10 @@ class SignupResponse {
   factory SignupResponse.fromJson(Map<String, dynamic> json) =>
       _$SignupResponseFromJson(json);
 
+  @JsonKey(name: 'localId')
   final String? id;
   final String? email;
+  @JsonKey(name: 'idToken')
   final String? token;
   final String? refreshToken;
   final String? expiresIn;
