@@ -1,5 +1,6 @@
 import 'package:diva/core/routing/routes.dart';
 import 'package:diva/features/login/ui/login_screen.dart';
+import 'package:diva/features/signup/ui/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -13,6 +14,10 @@ class AppRouter {
       case Routes.loginScreen:
         return MaterialPageRoute(
           builder: (_) => const LoginScreen(),
+        );
+      case Routes.signupScreen:
+        return MaterialPageRoute(
+          builder: (_) => const SignupScreen(),
         );
       default:
         return MaterialPageRoute(
