@@ -12,6 +12,7 @@ abstract class SignupApiService {
 
   @POST(SignupApiConstants.signupEp)
   Future<SignupResponse> signup(
-    @Body() SignupRequestBody body,
-  );
+    @Body() SignupRequestBody body, {
+    @Query('key') String apiKey = 'AIzaSyChRe4Npm-ICZaZFGmeYGWoLWNAoPqfruU',
+  });
 }
