@@ -46,8 +46,15 @@ class _SignupFormState extends State<SignupForm> {
           focusNode: _passwordFocusNode,
           hintText: 'Password',
         ),
-        if (_isPasswordFieldFocused)
-          PasswordValidations(controller: _passwordController),
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          constraints: BoxConstraints(
+            maxHeight: _isPasswordFieldFocused ? 100.h : 0,
+          ),
+          child: PasswordValidations(
+            controller: _passwordController,
+          ),
+        ),
         verticalSpace(16),
         const ObscuredTextFormField(
           hintText: 'Confirm password',

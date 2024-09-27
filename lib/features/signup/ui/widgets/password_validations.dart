@@ -45,30 +45,32 @@ class _PasswordValidationsState extends State<PasswordValidations> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(top: 4.h, left: 8.w),
-      child: Column(
-        children: [
-          buildValidationRow(
-            '8 Characters Minimum',
-            hasValidated: _hasMinLength,
-          ),
-          verticalSpace(1),
-          buildValidationRow(
-            'One Upper Character',
-            hasValidated: _hasUpperCase,
-          ),
-          verticalSpace(1),
-          buildValidationRow(
-            'One Lower Character',
-            hasValidated: _hasLowerCase,
-          ),
-          verticalSpace(1),
-          buildValidationRow(
-            'One Special Character',
-            hasValidated: _hasSpecialCharacters,
-          ),
-        ],
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.only(top: 4.h, left: 8.w),
+        child: Column(
+          children: [
+            buildValidationRow(
+              '8 Characters Minimum',
+              hasValidated: _hasMinLength,
+            ),
+            verticalSpace(1),
+            buildValidationRow(
+              'One Upper Character',
+              hasValidated: _hasUpperCase,
+            ),
+            verticalSpace(1),
+            buildValidationRow(
+              'One Lower Character',
+              hasValidated: _hasLowerCase,
+            ),
+            verticalSpace(1),
+            buildValidationRow(
+              'One Special Character',
+              hasValidated: _hasSpecialCharacters,
+            ),
+          ],
+        ),
       ),
     );
   }
