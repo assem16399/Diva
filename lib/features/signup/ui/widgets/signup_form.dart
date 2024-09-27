@@ -1,15 +1,37 @@
 import 'package:diva/core/helpers/spacing.dart';
-import 'package:diva/core/themes/styles.dart';
+import 'package:diva/core/themes/text_styles.dart';
 import 'package:diva/core/widgets/app_text_button.dart';
 import 'package:diva/core/widgets/app_text_form_field.dart';
 import 'package:diva/core/widgets/obscured_text_form_field.dart';
+import 'package:diva/features/signup/ui/widgets/password_validations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class SignupForm extends StatelessWidget {
+class SignupForm extends StatefulWidget {
   const SignupForm({
     super.key,
   });
+
+  @override
+  State<SignupForm> createState() => _SignupFormState();
+}
+
+class _SignupFormState extends State<SignupForm> {
+  final _passwordController = TextEditingController();
+  final _passwordFocusNode = FocusNode();
+  var _isPasswordFieldFocused = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _passwordFocusNode.addListener(_onFocusChange);
+  }
+
+  void _onFocusChange() {
+    setState(() {
+      _isPasswordFieldFocused = _passwordFocusNode.hasFocus;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +41,13 @@ class SignupForm extends StatelessWidget {
           hintText: 'E-mail',
         ),
         verticalSpace(16),
-        const ObscuredTextFormField(
+        ObscuredTextFormField(
+          controller: _passwordController,
+          focusNode: _passwordFocusNode,
           hintText: 'Password',
         ),
+        if (_isPasswordFieldFocused)
+          PasswordValidations(controller: _passwordController),
         verticalSpace(16),
         const ObscuredTextFormField(
           hintText: 'Confirm password',
@@ -35,24 +61,16 @@ class SignupForm extends StatelessWidget {
             onPressed: () {},
           ),
         ),
-        verticalSpace(24),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Already have an account? ',
-              style: TextStyles.font14BlackW400,
-            ),
-            GestureDetector(
-              onTap: () {},
-              child: Text(
-                'Login',
-                style: TextStyles.font14MainDeepPinkW400,
-              ),
-            ),
-          ],
-        ),
       ],
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _passwordController.dispose();
+    _passwordFocusNode
+      ..removeListener(_onFocusChange)
+      ..dispose();
   }
 }

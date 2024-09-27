@@ -6,4 +6,5 @@ class ColorsManager {
   static const Color vividRed = Color(0xFFDD2222);
   static const Color semiTransparentBlack = Color.fromRGBO(0, 0, 0, 0.43);
   static const Color shadedDarkGray = Color(0XFF494646);
+  static const Color forestGreen = Color(0XFF2F8655);
 }

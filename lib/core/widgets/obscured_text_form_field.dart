@@ -7,10 +7,32 @@ class ObscuredTextFormField extends StatefulWidget {
     super.key,
     this.hintText,
     this.isObscureText = true,
+    this.onTap,
+    this.controller,
+    this.focusNode,
+    this.contentPadding,
+    this.focusedBorder,
+    this.enabledBorder,
+    this.hintStyle,
+    this.backgroundColor,
+    this.validator,
+    this.onSaved,
+    this.onChanged,
   });
 
   final String? hintText;
   final bool isObscureText;
+  final VoidCallback? onTap;
+  final TextEditingController? controller;
+  final FocusNode? focusNode;
+  final EdgeInsetsGeometry? contentPadding;
+  final InputBorder? focusedBorder;
+  final InputBorder? enabledBorder;
+  final TextStyle? hintStyle;
+  final Color? backgroundColor;
+  final String? Function(String?)? validator;
+  final void Function(String?)? onSaved;
+  final void Function(String?)? onChanged;
 
   @override
   State<ObscuredTextFormField> createState() => _ObscuredTextFormFieldState();
@@ -34,6 +56,17 @@ class _ObscuredTextFormFieldState extends State<ObscuredTextFormField> {
   @override
   Widget build(BuildContext context) {
     return AppTextFormField(
+      onTap: widget.onTap,
+      onChanged: widget.onChanged,
+      onSaved: widget.onSaved,
+      validator: widget.validator,
+      contentPadding: widget.contentPadding,
+      backgroundColor: widget.backgroundColor,
+      enabledBorder: widget.enabledBorder,
+      focusedBorder: widget.focusedBorder,
+      hintStyle: widget.hintStyle,
+      focusNode: widget.focusNode,
+      controller: widget.controller,
       isObscureText: isObscure,
       hintText: widget.hintText,
       suffixIcon: IconButton(

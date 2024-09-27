@@ -11,6 +11,11 @@ class TextStyles {
     color: Colors.black,
   );
 
+  static TextStyle fontMulish12W400 = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w400,
+  );
+
   static TextStyle font18SemiTransparentBlackW400 = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeight.w400,
