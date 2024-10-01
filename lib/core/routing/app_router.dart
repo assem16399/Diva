@@ -1,7 +1,7 @@
 import 'package:diva/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 
-import '../../features/login/ui/LoginScreen.dart';
+import '../../features/login/ui/Login_Screen.dart';
 
 class AppRouter {
   const AppRouter();

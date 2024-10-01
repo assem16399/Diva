@@ -1,10 +1,10 @@
-import 'package:diva/core/widgets/myTextFeild.dart';
-import 'package:diva/features/login/ui/widgets/dontHaveAccount.dart';
+import 'package:diva/core/widgets/my_Text_Feild.dart';
+import 'package:diva/features/login/ui/widgets/dont_Have_Account.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/helpers/spacing.dart';
 import '../../../core/themes/styles.dart';
-import '../../../core/widgets/my_TextButtom.dart';
+import '../../../core/widgets/my_Text_Button.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({super.key});
