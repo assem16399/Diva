@@ -22,7 +22,7 @@ class DivaApp extends StatelessWidget {
           useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.loginScreen,
+        initialRoute: Routes.productDetails,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );
