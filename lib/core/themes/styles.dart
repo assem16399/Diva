@@ -51,8 +51,15 @@ class TextStyles {
     fontWeight: FontWeight.w400,
     color: Colors.black.withOpacity(0.4),
   );
-  static TextStyle font16DarkGrayW400 = TextStyle(
+
+  static TextStyle font16DarkGrayWithTransparencyW400 = TextStyle(
     fontSize: 16.sp,
+    fontWeight: FontWeight.w400,
+    color: ColorsManager.darkGrayWithTransparency,
+  );
+
+  static TextStyle font12DarkGrayW400 = TextStyle(
+    fontSize: 12.sp,
     fontWeight: FontWeight.w400,
     color: ColorsManager.darkGray,
   );
@@ -61,5 +68,11 @@ class TextStyles {
     fontSize: 12.sp,
     fontWeight: FontWeight.w400,
     color: ColorsManager.blackWithHalfOpacity,
+  );
+
+  static TextStyle font20BlackW600 = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeight.w600,
+    color: Colors.black,
   );
 }
