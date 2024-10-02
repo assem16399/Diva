@@ -14,7 +14,7 @@ class HeaderIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: onPressed,
       child: SizedBox(
         height: 32.w,
@@ -22,7 +22,7 @@ class HeaderIcon extends StatelessWidget {
         child: Card(
           elevation: 0.2,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16.r),
+            borderRadius: BorderRadius.circular(16),
           ),
           color: Colors.white,
           margin: EdgeInsets.zero,
