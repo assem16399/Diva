@@ -1,5 +1,5 @@
 import 'package:diva/core/themes/colors.dart';
-import 'package:diva/core/themes/styles.dart';
+import 'package:diva/core/themes/text_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

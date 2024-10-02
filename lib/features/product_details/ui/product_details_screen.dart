@@ -1,6 +1,6 @@
 import 'package:diva/core/helpers/constants.dart';
 import 'package:diva/core/helpers/spacing.dart';
-import 'package:diva/core/themes/styles.dart';
+import 'package:diva/core/themes/text_styles.dart';
 import 'package:diva/core/widgets/header_icon.dart';
 import 'package:diva/features/product_details/widgets/product_description.dart';
 import 'package:diva/features/product_details/widgets/product_reviews_summary.dart';

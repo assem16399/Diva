@@ -1,4 +1,4 @@
-import 'package:diva/core/themes/styles.dart';
+import 'package:diva/core/themes/text_styles.dart';
 import 'package:flutter/material.dart';
 
 class ProductTitle extends StatelessWidget {
