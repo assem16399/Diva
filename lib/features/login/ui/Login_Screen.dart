@@ -40,14 +40,14 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    mytextfeild(
+                    MyTextFeild(
                         hintText: " E-mail / phone number",
                         obscureText: false,
                         Controller: emailcontroller),
                     const SizedBox(
                       height: 15,
                     ),
-                    mytextfeild(
+                    MyTextFeild(
                         hintText: "password",
                         obscureText: false,
                         Controller: passwordcontroller),
@@ -64,13 +64,13 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 verticalSpace(30),
-                myTextButtom(
+                MyTextButtom(
                   buttonText: "Login",
                   textStyle: TextStyles.font20whiteRegular,
                   onPressed: () {},
                 ),
                 verticalSpace(60),
-                const dontHaveAccount(),
+                const DontHaveAccount(),
               ],
             ),
           ),
