@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 import '../themes/styles.dart';
 
-class mytextfeild extends StatelessWidget {
-  const mytextfeild({
+class Mytextfeild extends StatelessWidget {
+  const Mytextfeild({
     super.key,
     required this.hintText,
     required this.obscureText,
