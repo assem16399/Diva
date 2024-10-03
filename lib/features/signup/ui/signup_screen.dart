@@ -1,6 +1,7 @@
 import 'package:diva/core/helpers/spacing.dart';
 import 'package:diva/core/themes/text_styles.dart';
 import 'package:diva/core/widgets/auth_screen_title.dart';
+import 'package:diva/features/signup/ui/widgets/signup_bloc_listener.dart';
 import 'package:diva/features/signup/ui/widgets/signup_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,6 +31,7 @@ class SignupScreen extends StatelessWidget {
               ),
               verticalSpace(24),
               const AlreadyHaveAnAccountText(),
+              const SignupBlocListener(),
             ],
           ),
         ),
