@@ -19,6 +19,7 @@ class ObscuredTextFormField extends StatefulWidget {
     this.onSaved,
     this.onChanged,
     this.textInputType,
+    this.autocorrect = false,
   });
 
   final String? hintText;
@@ -35,6 +36,7 @@ class ObscuredTextFormField extends StatefulWidget {
   final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
   final void Function(String?)? onChanged;
+  final bool autocorrect;
 
   @override
   State<ObscuredTextFormField> createState() => _ObscuredTextFormFieldState();
@@ -58,6 +60,7 @@ class _ObscuredTextFormFieldState extends State<ObscuredTextFormField> {
   @override
   Widget build(BuildContext context) {
     return AppTextFormField(
+      autocorrect: widget.autocorrect,
       onTap: widget.onTap,
       textInputType: widget.textInputType,
       onChanged: widget.onChanged,
