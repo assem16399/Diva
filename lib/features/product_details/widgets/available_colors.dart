@@ -16,7 +16,7 @@ class _AvailableColorsState extends State<AvailableColors> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40.h,
+      height: 40,
       child: ListView.separated(
         itemCount: 9,
         scrollDirection: Axis.horizontal,
@@ -34,10 +34,10 @@ class _AvailableColorsState extends State<AvailableColors> {
                 decoration: BoxDecoration(
                   border: _selectedColorIndex != index
                       ? null
-                      : Border.all(width: 1.5.w),
-                  borderRadius: const BorderRadius.all(Radius.circular(100)),
+                      : Border.all(width: 1.w),
+                  borderRadius: const BorderRadius.all(Radius.circular(50)),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 4.w, vertical: 4.h),
+                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
                 child: const CircleAvatar(radius: 16),
               ),
             ),

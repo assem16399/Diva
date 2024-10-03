@@ -13,4 +13,5 @@ class ColorsManager {
   static const Color blackWithHalfOpacity = Color(0x80000000);
   static const Color lightPinkishColor = Color(0xFFFEEBF7);
   static const Color vibrantPinkishRedColor = Color(0xFFFF1768);
+  static const Color veryLightGrayColor = Color(0xFCECECEC);
 }

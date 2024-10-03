@@ -1,7 +1,6 @@
 import 'package:diva/core/helpers/spacing.dart';
 import 'package:diva/core/themes/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AvailableSizes extends StatefulWidget {
   const AvailableSizes({super.key});
@@ -15,7 +14,7 @@ class _AvailableSizesState extends State<AvailableSizes> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 40.h,
+      height: 40,
       child: ListView.separated(
         itemCount: 3,
         scrollDirection: Axis.horizontal,
@@ -30,7 +29,7 @@ class _AvailableSizesState extends State<AvailableSizes> {
                 });
               },
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 5.w, vertical: 5.h),
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
                 child: CircleAvatar(
                   radius: 16,
                   backgroundColor: _selectedSizeIndex != index
