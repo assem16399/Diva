@@ -21,86 +21,87 @@ class ProductDetailsScreen extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Stack(
+            child: Stack(
+              children: [
+                SingleChildScrollView(
+                  child: Column(
                     children: [
                       Container(
                         height: 426.h,
                         width: double.infinity,
                         color: Colors.red,
                       ),
-                      SafeArea(
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 24.w),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              HeaderIcon(
-                                iconPath: SVGIcons.back,
-                                onPressed: () {},
-                              ),
-                              HeaderIcon(
-                                iconPath: SVGIcons.share,
-                                onPressed: () {},
-                              ),
-                            ],
-                          ),
+                      verticalSpace(24.h),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 24.w),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    ProductTitle(
+                                      title: 'Elegant wrapped dress',
+                                    ),
+                                    ProductReviewsSummary(
+                                      review: 4.9,
+                                      totalReviews: 1000,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            verticalSpace(12.h),
+                            Text(
+                              '580 L.E',
+                              style: TextStyles.font20BlackW600,
+                            ),
+                            verticalSpace(12.h),
+                            const ProductDescription(
+                              description:
+                                  'Italian silky dress with wrapped waist bla bla bla '
+                                  'bla bla bla bla bla',
+                            ),
+                            verticalSpace(12.h),
+                            const SelectedValueText(
+                                valueTitle: 'Color', value: 'Brown'),
+                            verticalSpace(8.h),
+                            const AvailableColors(),
+                            verticalSpace(12.h),
+                            const SelectedValueText(
+                              valueTitle: 'Your size',
+                              value: 'Large',
+                            ),
+                            verticalSpace(8.h),
+                            const AvailableSizes(),
+                          ],
                         ),
                       ),
                     ],
                   ),
-                  verticalSpace(24.h),
-                  Padding(
+                ),
+                SafeArea(
+                  child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 24.w),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                ProductTitle(
-                                  title: 'Elegant wrapped dress',
-                                ),
-                                ProductReviewsSummary(
-                                  review: 4.9,
-                                  totalReviews: 1000,
-                                ),
-                              ],
-                            ),
-                          ],
+                        HeaderIcon(
+                          iconPath: SVGIcons.back,
+                          onPressed: () {},
                         ),
-                        verticalSpace(12.h),
-                        Text(
-                          '580 L.E',
-                          style: TextStyles.font20BlackW600,
+                        HeaderIcon(
+                          iconPath: SVGIcons.share,
+                          onPressed: () {},
                         ),
-                        verticalSpace(12.h),
-                        const ProductDescription(
-                          description:
-                              'Italian silky dress with wrapped waist bla bla bla '
-                              'bla bla bla bla bla',
-                        ),
-                        verticalSpace(12.h),
-                        const SelectedValueText(
-                            valueTitle: 'Color', value: 'Brown'),
-                        verticalSpace(8.h),
-                        const AvailableColors(),
-                        verticalSpace(12.h),
-                        const SelectedValueText(
-                          valueTitle: 'Your size',
-                          value: 'Large',
-                        ),
-                        verticalSpace(8.h),
-                        const AvailableSizes(),
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
           Padding(
