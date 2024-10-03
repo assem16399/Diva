@@ -18,6 +18,7 @@ class ObscuredTextFormField extends StatefulWidget {
     this.validator,
     this.onSaved,
     this.onChanged,
+    this.textInputType,
   });
 
   final String? hintText;
@@ -30,6 +31,7 @@ class ObscuredTextFormField extends StatefulWidget {
   final InputBorder? enabledBorder;
   final TextStyle? hintStyle;
   final Color? backgroundColor;
+  final TextInputType? textInputType;
   final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
   final void Function(String?)? onChanged;
@@ -57,6 +59,7 @@ class _ObscuredTextFormFieldState extends State<ObscuredTextFormField> {
   Widget build(BuildContext context) {
     return AppTextFormField(
       onTap: widget.onTap,
+      textInputType: widget.textInputType,
       onChanged: widget.onChanged,
       onSaved: widget.onSaved,
       validator: widget.validator,

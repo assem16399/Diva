@@ -60,6 +60,7 @@ class _SignupFormState extends State<SignupForm> {
           AppTextFormField(
             controller: _emailController,
             hintText: 'E-mail',
+            textInputType: TextInputType.emailAddress,
             validator: (value) {
               if (value == null ||
                   value.isEmpty ||

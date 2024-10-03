@@ -20,6 +20,7 @@ class AppTextFormField extends StatelessWidget {
     this.onSaved,
     this.onChanged,
     this.contentPadding,
+    this.textInputType,
   });
 
   final String? hintText;
@@ -28,13 +29,12 @@ class AppTextFormField extends StatelessWidget {
   final VoidCallback? onTap;
   final TextEditingController? controller;
   final FocusNode? focusNode;
-
   final EdgeInsetsGeometry? contentPadding;
-
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;
   final TextStyle? hintStyle;
   final Color? backgroundColor;
+  final TextInputType? textInputType;
   final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
   final void Function(String?)? onChanged;
@@ -42,6 +42,10 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTapOutside: (_) {
+        FocusScope.of(context).unfocus();
+      },
+      keyboardType: textInputType,
       focusNode: focusNode,
       obscureText: isObscureText,
       controller: controller,
