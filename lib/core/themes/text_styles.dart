@@ -76,4 +76,16 @@ class TextStyles {
     fontWeight: FontWeightHelper.w600,
     color: Colors.black,
   );
+
+  static TextStyle font16BlackW400 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.w400,
+    color: Colors.black,
+  );
+
+  static TextStyle font10VibrantPinkishRedColorW400 = TextStyle(
+    fontSize: 10.sp,
+    fontWeight: FontWeightHelper.w400,
+    color: ColorsManager.vibrantPinkishRedColor,
+  );
 }

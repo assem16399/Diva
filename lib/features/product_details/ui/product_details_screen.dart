@@ -2,6 +2,8 @@ import 'package:diva/core/helpers/constants.dart';
 import 'package:diva/core/helpers/spacing.dart';
 import 'package:diva/core/themes/text_styles.dart';
 import 'package:diva/core/widgets/header_icon.dart';
+import 'package:diva/features/product_details/widgets/available_colors.dart';
+import 'package:diva/features/product_details/widgets/available_sizes.dart';
 import 'package:diva/features/product_details/widgets/product_description.dart';
 import 'package:diva/features/product_details/widgets/product_reviews_summary.dart';
 import 'package:diva/features/product_details/widgets/product_title.dart';
@@ -77,12 +79,53 @@ class ProductDetailsScreen extends StatelessWidget {
                         'Italian silky dress with wrapped waist bla bla bla '
                         'bla bla bla bla bla',
                   ),
+                  verticalSpace(12.h),
+                  const SelectedValueText(valueTitle: 'Color', value: 'Brown'),
+                  verticalSpace(8.h),
+                  const AvailableColors(),
+                  verticalSpace(12.h),
+                  const SelectedValueText(
+                    valueTitle: 'Your size',
+                    value: 'Large',
+                  ),
+                  verticalSpace(8.h),
+                  const AvailableSizes(),
                 ],
               ),
             ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class SelectedValueText extends StatelessWidget {
+  const SelectedValueText({
+    required this.value,
+    required this.valueTitle,
+    super.key,
+  });
+  final String value;
+  final String valueTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Text(
+          valueTitle,
+          style: TextStyles.font20BlackW600,
+        ),
+        Text(
+          ' : ',
+          style: TextStyles.font16BlackW400,
+        ),
+        Text(
+          value,
+          style: TextStyles.font16BlackW400,
+        ),
+      ],
     );
   }
 }
