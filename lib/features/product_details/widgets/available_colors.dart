@@ -34,10 +34,10 @@ class _AvailableColorsState extends State<AvailableColors> {
                 decoration: BoxDecoration(
                   border: _selectedColorIndex != index
                       ? null
-                      : Border.all(width: 1.w),
+                      : Border.all(width: 1.5.w),
                   borderRadius: const BorderRadius.all(Radius.circular(50)),
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 2),
                 child: const CircleAvatar(radius: 16),
               ),
             ),

@@ -1,12 +1,12 @@
 import 'package:diva/core/helpers/constants.dart';
 import 'package:diva/core/helpers/spacing.dart';
-import 'package:diva/core/themes/colors.dart';
 import 'package:diva/core/themes/text_styles.dart';
-import 'package:diva/core/widgets/app_text_button.dart';
 import 'package:diva/core/widgets/header_icon.dart';
+import 'package:diva/core/widgets/images_slider.dart';
 import 'package:diva/features/product_details/widgets/available_colors.dart';
 import 'package:diva/features/product_details/widgets/available_sizes.dart';
 import 'package:diva/features/product_details/widgets/product_description.dart';
+import 'package:diva/features/product_details/widgets/product_details_bottom_actions.dart';
 import 'package:diva/features/product_details/widgets/product_reviews_summary.dart';
 import 'package:diva/features/product_details/widgets/product_title.dart';
 import 'package:flutter/material.dart';
@@ -26,10 +26,21 @@ class ProductDetailsScreen extends StatelessWidget {
                 SingleChildScrollView(
                   child: Column(
                     children: [
-                      Container(
+                      SizedBox(
                         height: 426.h,
                         width: double.infinity,
-                        color: Colors.red,
+                        child: ImagesSlider(
+                          height: 426.h,
+                          width: double.infinity,
+                          images: const [
+                            'https://static.wikia.nocookie.net'
+                                '/jujutsu-kaisen/images/5/5a/'
+                                'Satoru_Gojo_arrives_on_the_battlefield'
+                                '_%28Anime%29.png/revision/latest?cb=20210226205256',
+                            'https://static0.gamerantimages.com/wordpress/wp-content'
+                                '/uploads/2023/01/yuji-itadori-weilding-cursed-energy-1.jpg',
+                          ],
+                        ),
                       ),
                       verticalSpace(24.h),
                       Padding(
@@ -62,12 +73,14 @@ class ProductDetailsScreen extends StatelessWidget {
                             verticalSpace(12.h),
                             const ProductDescription(
                               description:
-                                  'Italian silky dress with wrapped waist bla bla bla '
-                                  'bla bla bla bla bla',
+                                  'Italian silky dress with wrapped waist bla '
+                                  'bla bla bla bla bla bla bla',
                             ),
                             verticalSpace(12.h),
                             const SelectedValueText(
-                                valueTitle: 'Color', value: 'Brown'),
+                              valueTitle: 'Color',
+                              value: 'Brown',
+                            ),
                             verticalSpace(8.h),
                             const AvailableColors(),
                             verticalSpace(12.h),
@@ -106,50 +119,12 @@ class ProductDetailsScreen extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(bottom: 16.h),
-            child: SizedBox(
-              height: 48.h,
+            child: const SizedBox(
+              height: 48,
               width: double.infinity,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
-                      color: ColorsManager.veryLightGrayColor,
-                    ),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.favorite,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                  Flexible(
-                    child: AppTextButton(
-                      buttonText: 'Buy now',
-                      textStyle: TextStyles.font18WhiteW400,
-                      buttonWidth: 155.h,
-                      onPressed: () {},
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(24),
-                      color: ColorsManager.veryLightGrayColor,
-                    ),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.shopping_cart,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              child: ProductDetailsBottomActions(),
             ),
-          )
+          ),
         ],
       ),
     );
