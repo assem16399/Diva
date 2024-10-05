@@ -1,4 +1,6 @@
+import 'package:diva/core/helpers/extensions.dart';
 import 'package:diva/core/helpers/spacing.dart';
+import 'package:diva/core/routing/routes.dart';
 import 'package:diva/core/themes/text_styles.dart';
 import 'package:diva/core/widgets/app_text_button.dart';
 import 'package:diva/core/widgets/app_text_form_field.dart';
@@ -65,7 +67,9 @@ class _SignupFormState extends State<SignupForm> {
           child: AppTextButton(
             buttonText: 'Sign Up',
             textStyle: TextStyles.font18WhiteW400,
-            onPressed: () {},
+            onPressed: () {
+              context.pushNamed(Routes.myBottomNavBar);
+            },
           ),
         ),
       ],
