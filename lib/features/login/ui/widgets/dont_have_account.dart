@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 
-import '../../../../core/themes/styles.dart';
+import '../../../../core/themes/text_styles.dart';
 
 class DontHaveAccount extends StatelessWidget {
   const DontHaveAccount({super.key});

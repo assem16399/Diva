@@ -4,15 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../themes/colors.dart';
 
 class MyTextButtom extends StatelessWidget {
-  final double? borderRadius;
-  final Color? backgroundColor;
-  final double? horizontalPadding;
-  final double? verticalPadding;
-  final double? buttonWidth;
-  final double? buttonHeight;
-  final String buttonText;
-  final TextStyle textStyle;
-  final VoidCallback onPressed;
   const MyTextButtom({
     super.key,
     this.borderRadius,
@@ -25,6 +16,15 @@ class MyTextButtom extends StatelessWidget {
     required this.textStyle,
     required this.onPressed,
   });
+  final double? borderRadius;
+  final Color? backgroundColor;
+  final double? horizontalPadding;
+  final double? verticalPadding;
+  final double? buttonWidth;
+  final double? buttonHeight;
+  final String buttonText;
+  final TextStyle textStyle;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
