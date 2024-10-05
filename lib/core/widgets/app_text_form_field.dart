@@ -20,6 +20,7 @@ class AppTextFormField extends StatelessWidget {
     this.onSaved,
     this.onChanged,
     this.contentPadding,
+    this.prefixIcon,
   });
 
   final String? hintText;
@@ -39,6 +40,8 @@ class AppTextFormField extends StatelessWidget {
   final void Function(String?)? onSaved;
   final void Function(String?)? onChanged;
 
+  final Widget? prefixIcon;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -53,6 +56,7 @@ class AppTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         contentPadding: contentPadding ??
             EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
+        prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
         hintText: hintText,
         hintStyle: TextStyles.font18SemiTransparentBlackW400,
