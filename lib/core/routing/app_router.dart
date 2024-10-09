@@ -1,6 +1,7 @@
 import 'package:diva/core/di/dependency_injection.dart';
 import 'package:diva/core/routing/routes.dart';
 import 'package:diva/features/login/ui/login_screen.dart';
+import 'package:diva/features/product_details/ui/product_details_screen.dart';
 import 'package:diva/features/signup/logic/signup_cubit.dart';
 import 'package:diva/features/signup/ui/signup_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,10 @@ class AppRouter {
             create: (context) => getIt<SignupCubit>(),
             child: const SignupScreen(),
           ),
+        );
+      case Routes.productDetails:
+        return MaterialPageRoute(
+          builder: (_) => const ProductDetailsScreen(),
         );
       default:
         return MaterialPageRoute(
