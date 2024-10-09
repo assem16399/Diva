@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:diva/features/product_details/data/data/product_details_api_constants.dart';
+import 'package:diva/features/product_details/data/apis/product_details_api_constants.dart';
 import 'package:diva/features/product_details/data/models/single_product_model.dart';
 import 'package:retrofit/retrofit.dart';
 
