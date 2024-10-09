@@ -4,23 +4,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppTextFormField extends StatelessWidget {
-  const AppTextFormField({
-    super.key,
-    this.hintText,
-    this.isObscureText = false,
-    this.suffixIcon,
-    this.onTap,
-    this.controller,
-    this.focusNode,
-    this.focusedBorder,
-    this.enabledBorder,
-    this.hintStyle,
-    this.backgroundColor,
-    this.validator,
-    this.onSaved,
-    this.onChanged,
-    this.contentPadding,
-  });
+  const AppTextFormField(
+      {super.key,
+      this.hintText,
+      this.isObscureText = false,
+      this.suffixIcon,
+      this.onTap,
+      this.controller,
+      this.focusNode,
+      this.focusedBorder,
+      this.enabledBorder,
+      this.hintStyle,
+      this.backgroundColor,
+      this.validator,
+      this.onSaved,
+      this.onChanged,
+      this.contentPadding,
+      this.textInputType,
+      this.autocorrect = false});
 
   final String? hintText;
   final bool isObscureText;
@@ -28,20 +29,25 @@ class AppTextFormField extends StatelessWidget {
   final VoidCallback? onTap;
   final TextEditingController? controller;
   final FocusNode? focusNode;
-
   final EdgeInsetsGeometry? contentPadding;
-
   final InputBorder? focusedBorder;
   final InputBorder? enabledBorder;
   final TextStyle? hintStyle;
   final Color? backgroundColor;
+  final TextInputType? textInputType;
   final String? Function(String?)? validator;
   final void Function(String?)? onSaved;
   final void Function(String?)? onChanged;
+  final bool autocorrect;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      autocorrect: autocorrect,
+      onTapOutside: (_) {
+        FocusScope.of(context).unfocus();
+      },
+      keyboardType: textInputType,
       focusNode: focusNode,
       obscureText: isObscureText,
       controller: controller,

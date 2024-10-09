@@ -8,9 +8,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class PasswordValidations extends StatefulWidget {
   const PasswordValidations({
     required this.controller,
+    required this.getPasswordValidationStatus,
     super.key,
   });
   final TextEditingController controller;
+  final void Function({required bool isValid}) getPasswordValidationStatus;
 
   @override
   State<PasswordValidations> createState() => _PasswordValidationsState();
@@ -41,6 +43,13 @@ class _PasswordValidationsState extends State<PasswordValidations> {
           AppRegex.hasSpecialCharacter(widget.controller.text);
       _hasMinLength = AppRegex.hasMinLength(widget.controller.text);
     });
+
+    widget.getPasswordValidationStatus(
+      isValid: _hasLowerCase &&
+          _hasUpperCase &&
+          _hasSpecialCharacters &&
+          _hasMinLength,
+    );
   }
 
   @override
