@@ -69,6 +69,7 @@ class _SignupFormState extends State<SignupForm> {
               }
               return null;
             },
+            autocorrect: false,
           ),
           verticalSpace(16),
           ObscuredTextFormField(
