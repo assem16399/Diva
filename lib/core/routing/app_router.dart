@@ -7,6 +7,9 @@ import 'package:diva/features/signup/ui/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/home_Screen/ui/home_Screen_Ui.dart';
+import '../../features/home_Screen/ui/weights/my_Bottom_NavBar.dart';
+
 class AppRouter {
   const AppRouter();
 
@@ -17,7 +20,7 @@ class AppRouter {
     switch (settings.name) {
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (_) => const LoginScreen(),
+          builder: (_) => LoginScreen(),
         );
       case Routes.signupScreen:
         return MaterialPageRoute(
@@ -29,6 +32,12 @@ class AppRouter {
       case Routes.productDetails:
         return MaterialPageRoute(
           builder: (_) => const ProductDetailsScreen(),
+        );
+      case Routes.homeScreen:
+        return MaterialPageRoute(builder: (_) => HomeScreenUi());
+      case Routes.myBottomNavBar:
+        return MaterialPageRoute(
+          builder: (_) => MyBottomNavBar(),
         );
       default:
         return MaterialPageRoute(
