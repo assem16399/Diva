@@ -71,6 +71,7 @@ dependencies:
   # easy way to add shimmer effect
   shimmer: ^3.0.0
   google_fonts: ^6.2.1
+  google_nav_bar: ^5.0.6
   # A carousel slider widget, support infinite scroll and custom child widget.
   carousel_slider: ^5.0.0
   # The "very_good_analysis" package below contains a set of recommended lints to
