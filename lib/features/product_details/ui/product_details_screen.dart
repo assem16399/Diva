@@ -3,12 +3,12 @@ import 'package:diva/core/helpers/spacing.dart';
 import 'package:diva/core/themes/text_styles.dart';
 import 'package:diva/core/widgets/header_icon.dart';
 import 'package:diva/core/widgets/images_slider.dart';
-import 'package:diva/features/product_details/widgets/available_colors.dart';
-import 'package:diva/features/product_details/widgets/available_sizes.dart';
-import 'package:diva/features/product_details/widgets/product_description.dart';
-import 'package:diva/features/product_details/widgets/product_details_bottom_actions.dart';
-import 'package:diva/features/product_details/widgets/product_reviews_summary.dart';
-import 'package:diva/features/product_details/widgets/product_title.dart';
+import 'package:diva/features/product_details/ui/widgets/available_colors.dart';
+import 'package:diva/features/product_details/ui/widgets/available_sizes.dart';
+import 'package:diva/features/product_details/ui/widgets/product_description.dart';
+import 'package:diva/features/product_details/ui/widgets/product_details_bottom_actions.dart';
+import 'package:diva/features/product_details/ui/widgets/product_reviews_summary.dart';
+import 'package:diva/features/product_details/ui/widgets/product_title.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
