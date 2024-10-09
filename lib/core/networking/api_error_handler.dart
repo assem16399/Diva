@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:diva/core/networking/app_error_model.dart';
+import 'package:diva/core/networking/api_error_model.dart';
+import 'package:diva/core/networking/api_error_model_factory.dart';
 
 class ApiErrorHandler {
   static ApiErrorModel handle(dynamic error) {
@@ -21,12 +22,11 @@ class ApiErrorHandler {
             message: 'Receive timeout in connection with the server',
           );
         case DioExceptionType.badResponse:
-          return _handleError(error.response?.data);
+          return ApiErrorModelFactory.createApiErrorModel(error.response?.data);
         case DioExceptionType.sendTimeout:
           return ApiErrorModel(
             message: 'Send timeout in connection with the server',
           );
-
         case DioExceptionType.badCertificate:
           return ApiErrorModel(message: 'Bad certificate');
       }
@@ -34,12 +34,4 @@ class ApiErrorHandler {
       return ApiErrorModel(message: 'Unknown error occurred');
     }
   }
-}
-
-ApiErrorModel _handleError(dynamic data) {
-  return ApiErrorModel(
-    message: data['message'] as String? ?? 'Unknown error occurred',
-    code: data['code'] as int?,
-    errors: data['data'],
-  );
 }
