@@ -1,7 +1,14 @@
 import 'package:bloc/bloc.dart';
+import 'package:diva/core/networking/api_error_model.dart';
+import 'package:diva/core/networking/api_error_model.dart';
+import 'package:diva/core/networking/api_error_model.dart';
+import 'package:diva/features/login/data/models/login_request_body.dart';
 import 'package:diva/features/login/data/repo/login_repo.dart';
 import 'package:diva/features/login/logic/login_state.dart';
 import 'package:flutter/cupertino.dart';
+
+import '../../../core/networking/api_error_model.dart';
+import '../../../core/networking/dio_factory.dart';
 
 part 'login_state.dart';
 
@@ -25,7 +32,7 @@ class LoginCubit extends Cubit<LoginState> {
       await saveUserToken(loginResponse.userData?.token ?? '');
       emit(LoginState.success(loginResponse));
     }, failure: (error) {
-      emit(LoginState.error(error: error.apiErrorModel.message ?? ''));
+      emit(LoginState.error(error: error.ApiErrorModel.message ?? ''));
     });
   }
 
