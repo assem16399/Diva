@@ -1,7 +1,6 @@
 import 'package:diva/core/themes/colors.dart';
+import 'package:diva/core/themes/text_styles.dart';
 import 'package:flutter/material.dart';
-
-import '../themes/styles.dart';
 
 class Mytextfeild extends StatelessWidget {
   const Mytextfeild({

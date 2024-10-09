@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 
-import '../../../../core/themes/styles.dart';
+import '../../../../core/themes/text_styles.dart';
 
-class dontHaveAccount extends StatelessWidget {
-  const dontHaveAccount({super.key});
+class DontHaveAccount extends StatelessWidget {
+  const DontHaveAccount({super.key});
 
   @override
   Widget build(BuildContext context) {

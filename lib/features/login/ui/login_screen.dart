@@ -1,15 +1,23 @@
-import 'package:diva/core/widgets/my_Text_Feild.dart';
-import 'package:diva/features/login/ui/widgets/dont_Have_Account.dart';
+import 'package:diva/core/widgets/my_text_field.dart';
+import 'package:diva/features/login/ui/widgets/dont_have_account.dart';
 import 'package:flutter/material.dart';
 
 import '../../../core/helpers/spacing.dart';
-import '../../../core/themes/styles.dart';
-import '../../../core/widgets/my_Text_Button.dart';
+import '../../../core/themes/text_styles.dart';
+import '../../../core/widgets/my_text_button.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
-  TextEditingController emailcontroller = TextEditingController();
-  TextEditingController passwordcontroller = TextEditingController();
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final emailcontroller = TextEditingController();
+
+  final passwordcontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +78,7 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {},
                 ),
                 verticalSpace(60),
-                const dontHaveAccount(),
+                const DontHaveAccount(),
               ],
             ),
           ),
