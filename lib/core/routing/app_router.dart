@@ -7,6 +7,8 @@ import 'package:diva/features/signup/ui/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../features/login/ui/Login_Screen.dart';
+
 class AppRouter {
   const AppRouter();
 
@@ -17,7 +19,7 @@ class AppRouter {
     switch (settings.name) {
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (_) => const LoginScreen(),
+          builder: (_) => LoginScreen(),
         );
       case Routes.signupScreen:
         return MaterialPageRoute(
