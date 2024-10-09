@@ -3,6 +3,7 @@ import 'package:diva/core/routing/routes.dart';
 import 'package:diva/core/themes/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class DivaApp extends StatelessWidget {
   const DivaApp({required this.appRouter, super.key});
@@ -20,9 +21,10 @@ class DivaApp extends StatelessWidget {
           primaryColor: ColorsManager.mainDeepPink,
           scaffoldBackgroundColor: Colors.white,
           useMaterial3: true,
+          textTheme: GoogleFonts.robotoTextTheme(),
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.loginScreen,
+        initialRoute: Routes.productDetails,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

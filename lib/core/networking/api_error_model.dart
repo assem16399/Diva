@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'app_error_model.g.dart';
+part 'api_error_model.g.dart';
 
 @JsonSerializable()
 class ApiErrorModel {
@@ -12,10 +12,27 @@ class ApiErrorModel {
 
   factory ApiErrorModel.fromJson(Map<String, dynamic> json) =>
       _$ApiErrorModelFromJson(json);
+
   final String? message;
   final int? code;
   @JsonKey(name: 'data')
   final dynamic errors;
 
   Map<String, dynamic> toJson() => _$ApiErrorModelToJson(this);
+}
+
+class FirebaseAuthErrorModel extends ApiErrorModel {
+  FirebaseAuthErrorModel({
+    super.message,
+    super.code,
+    super.errors,
+  });
+
+  factory FirebaseAuthErrorModel.fromJson(Map<String, dynamic> json) {
+    return FirebaseAuthErrorModel(
+      message: json['message'] as String? ?? 'Unknown error occurred',
+      code: json['code'] as int?,
+      errors: json['data'],
+    );
+  }
 }
