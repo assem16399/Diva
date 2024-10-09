@@ -24,7 +24,7 @@ class DivaApp extends StatelessWidget {
           textTheme: GoogleFonts.robotoTextTheme(),
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.signupScreen,
+        initialRoute: Routes.productDetails,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

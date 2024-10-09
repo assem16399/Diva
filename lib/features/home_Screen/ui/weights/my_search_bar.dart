@@ -16,12 +16,14 @@ class MySearchBar extends StatelessWidget {
             width: 270,
             height: 50,
             child: AppTextFormField(
-                hintText: 'search here',
-                prefixIcon: Icon(
-                  Icons.search,
-                  color: Colors.pinkAccent[100],
-                ),
-                controller: textcontroller),
+              hintText: 'search here',
+              prefixIcon: Icon(
+                Icons.search,
+                color: Colors.pinkAccent[100],
+              ),
+              controller: textcontroller,
+              autocorrect: true,
+            ),
           ),
           Container(
             height: 50,
