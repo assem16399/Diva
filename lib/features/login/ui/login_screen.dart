@@ -6,10 +6,18 @@ import '../../../core/helpers/spacing.dart';
 import '../../../core/themes/text_styles.dart';
 import '../../../core/widgets/my_text_button.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   LoginScreen({super.key});
-  TextEditingController emailcontroller = TextEditingController();
-  TextEditingController passwordcontroller = TextEditingController();
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final emailcontroller = TextEditingController();
+
+  final passwordcontroller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,14 +48,14 @@ class LoginScreen extends StatelessWidget {
                 ),
                 Column(
                   children: [
-                    MyTextFeild(
+                    Mytextfeild(
                         hintText: " E-mail / phone number",
                         obscureText: false,
                         Controller: emailcontroller),
                     const SizedBox(
                       height: 15,
                     ),
-                    MyTextFeild(
+                    Mytextfeild(
                         hintText: "password",
                         obscureText: false,
                         Controller: passwordcontroller),

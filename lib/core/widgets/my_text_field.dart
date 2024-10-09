@@ -2,8 +2,8 @@ import 'package:diva/core/themes/colors.dart';
 import 'package:diva/core/themes/text_styles.dart';
 import 'package:flutter/material.dart';
 
-class MyTextFeild extends StatelessWidget {
-  const MyTextFeild({
+class Mytextfeild extends StatelessWidget {
+  const Mytextfeild({
     super.key,
     required this.hintText,
     required this.obscureText,
