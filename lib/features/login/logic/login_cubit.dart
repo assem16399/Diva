@@ -1,26 +1,22 @@
 import 'package:bloc/bloc.dart';
-import 'package:diva/core/networking/api_error_model.dart';
-import 'package:diva/core/networking/api_error_model.dart';
-import 'package:diva/core/networking/api_error_model.dart';
+import 'package:diva/core/helpers/constants.dart';
+import 'package:diva/core/helpers/shared_pref_helper.dart';
 import 'package:diva/features/login/data/models/login_request_body.dart';
+import 'package:diva/features/login/data/models/login_response.dart';
 import 'package:diva/features/login/data/repo/login_repo.dart';
 import 'package:diva/features/login/logic/login_state.dart';
 import 'package:flutter/cupertino.dart';
 
-import '../../../core/networking/api_error_model.dart';
-import '../../../core/networking/dio_factory.dart';
-
-part 'login_state.dart';
-
-class LoginCubit extends Cubit<LoginState> {
-  final LoginRepo _loginRepo;
+class LoginCubit extends Cubit<LoginState<LoginResponse>> {
   LoginCubit(this._loginRepo) : super(const LoginState.initial());
+  final LoginRepo _loginRepo;
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  void emitLoginStates() async {
+  Future<void> emitLoginStates() async {
+    if (!formKey.currentState!.validate()) return;
     emit(const LoginState.loading());
     final response = await _loginRepo.login(
       LoginRequestBody(
@@ -28,16 +24,18 @@ class LoginCubit extends Cubit<LoginState> {
         password: passwordController.text,
       ),
     );
-    response.when(success: (loginResponse) async {
-      await saveUserToken(loginResponse.userData?.token ?? '');
-      emit(LoginState.success(loginResponse));
-    }, failure: (error) {
-      emit(LoginState.error(error: error.ApiErrorModel.message ?? ''));
-    });
+    await response.when(
+      success: (loginResponse) async {
+        await saveUserToken(loginResponse.token ?? '');
+        emit(LoginState.success(loginResponse));
+      },
+      failure: (error) {
+        emit(LoginState.error(error: error.message ?? ''));
+      },
+    );
   }
 
   Future<void> saveUserToken(String token) async {
     await SharedPrefHelper.setSecuredString(SharedPrefKeys.userToken, token);
-    DioFactory.setTokenIntoHeaderAfterLogin(token);
   }
 }
