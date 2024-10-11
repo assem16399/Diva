@@ -20,6 +20,7 @@ class ObscuredTextFormField extends StatefulWidget {
     this.onChanged,
     this.textInputType,
     this.autocorrect = false,
+    GestureDetector? suffixIcon,
   });
 
   final String? hintText;

@@ -1,5 +1,6 @@
 import 'package:diva/core/di/dependency_injection.dart';
 import 'package:diva/core/routing/routes.dart';
+import 'package:diva/features/login/logic/login_cubit.dart';
 import 'package:diva/features/login/ui/login_screen.dart';
 import 'package:diva/features/product_details/ui/product_details_screen.dart';
 import 'package:diva/features/signup/logic/signup_cubit.dart';
@@ -20,7 +21,10 @@ class AppRouter {
     switch (settings.name) {
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (_) => LoginScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<LoginCubit>(),
+            child: LoginScreen(),
+          ),
         );
       case Routes.signupScreen:
         return MaterialPageRoute(
