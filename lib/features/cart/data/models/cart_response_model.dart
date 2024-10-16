@@ -40,7 +40,7 @@ class CartProductResponseModel {
   });
 
   factory CartProductResponseModel.fromJson(Map<String, dynamic> json) =>
-      _$ProductCartResponseModelFromJson(json);
+      _$CartProductResponseModelFromJson(json);
 
   final String id;
   final String title;
