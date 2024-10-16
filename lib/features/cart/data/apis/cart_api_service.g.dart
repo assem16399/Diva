@@ -57,12 +57,12 @@ class _CartApiService implements CartApiService {
   }
 
   @override
-  Future<ProductCartResponseModel> getProductData(String id) async {
+  Future<CartProductResponseModel> getProductData(String id) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ProductCartResponseModel>(Options(
+    final _options = _setStreamType<CartProductResponseModel>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -79,9 +79,9 @@ class _CartApiService implements CartApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ProductCartResponseModel _value;
+    late CartProductResponseModel _value;
     try {
-      _value = ProductCartResponseModel.fromJson(_result.data!);
+      _value = CartProductResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

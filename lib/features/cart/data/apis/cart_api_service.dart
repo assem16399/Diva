@@ -13,7 +13,7 @@ abstract class CartApiService {
   Future<CartResponseModel> getCartData();
 
   @GET('${CartApiConstants.productDetailsEp} / {id}')
-  Future<ProductCartResponseModel> getProductData(
+  Future<CartProductResponseModel> getProductData(
     @Path('id') String id,
   );
 }

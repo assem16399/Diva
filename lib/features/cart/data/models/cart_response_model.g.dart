@@ -37,16 +37,16 @@ Map<String, dynamic> _$SummarizedCartItemModelToJson(
       'quantity': instance.quantity,
     };
 
-ProductCartResponseModel _$ProductCartResponseModelFromJson(
+CartProductResponseModel _$CartProductResponseModelFromJson(
         Map<String, dynamic> json) =>
-    ProductCartResponseModel(
+    CartProductResponseModel(
       id: json['id'] as String,
       title: json['title'] as String,
       price: (json['price'] as num).toDouble(),
     );
 
-Map<String, dynamic> _$ProductCartResponseModelToJson(
-        ProductCartResponseModel instance) =>
+Map<String, dynamic> _$CartProductResponseModelToJson(
+        CartProductResponseModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,

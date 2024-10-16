@@ -32,14 +32,14 @@ class SummarizedCartItemModel {
 }
 
 @JsonSerializable()
-class ProductCartResponseModel {
-  ProductCartResponseModel({
+class CartProductResponseModel {
+  CartProductResponseModel({
     required this.id,
     required this.title,
     required this.price,
   });
 
-  factory ProductCartResponseModel.fromJson(Map<String, dynamic> json) =>
+  factory CartProductResponseModel.fromJson(Map<String, dynamic> json) =>
       _$ProductCartResponseModelFromJson(json);
 
   final String id;
