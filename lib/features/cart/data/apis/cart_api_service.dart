@@ -16,4 +16,9 @@ abstract class CartApiService {
   Future<CartProductResponseModel> getProductData(
     @Path('id') String id,
   );
+
+  @PUT(CartApiConstants.cartEP)
+  Future<CartResponseModel> updateCartData(
+    @Body() CartResponseModel body,
+  );
 }

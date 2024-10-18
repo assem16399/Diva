@@ -20,6 +20,19 @@ class CartRepo {
     }
   }
 
+  Future<ApiResult<CartModel>> updateCartData(
+      CartResponseModel cartData) async {
+    try {
+      final updatedCartData = await _apiService.updateCartData(cartData);
+      final cartProducts = await _getCartProducts(updatedCartData.products);
+      return ApiResult.success(
+        CartModel(cartBasicData: updatedCartData, cartProducts: cartProducts),
+      );
+    } catch (e) {
+      return ApiResult.failure(ApiErrorHandler.handle(e));
+    }
+  }
+
   Future<List<CartProductResponseModel>> _getCartProducts(
     List<SummarizedCartItemModel> summarizedCartItems,
   ) async {
