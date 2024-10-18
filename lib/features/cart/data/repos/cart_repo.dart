@@ -21,7 +21,8 @@ class CartRepo {
   }
 
   Future<ApiResult<CartModel>> updateCartData(
-      CartResponseModel cartData) async {
+    CartResponseModel cartData,
+  ) async {
     try {
       final updatedCartData = await _apiService.updateCartData(cartData);
       final cartProducts = await _getCartProducts(updatedCartData.products);
