@@ -1,74 +1,98 @@
+import 'package:diva/core/di/dependency_injection.dart';
 import 'package:diva/core/helpers/spacing.dart';
-import 'package:diva/core/themes/text_styles.dart';
-import 'package:diva/features/home_Screen/ui/weights/custom_appbar.dart';
+import 'package:diva/core/widgets/categries_tab_list.dart';
+import 'package:diva/features/categeries_secreen/data/models/category_product_response_model.dart';
+import 'package:diva/features/home_Screen/logic/home_screen_cubit.dart';
+import 'package:diva/features/home_Screen/ui/weights/my_products_list_item.dart';
 import 'package:diva/features/home_Screen/ui/weights/my_search_bar.dart';
-import 'package:diva/features/home_Screen/ui/weights/proudectsList.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeScreenUi extends StatelessWidget {
-  HomeScreenUi({super.key});
-  List<String> Tabs = ['All', 'New in', 'Popular', 'Modest', 'Formal'];
+  const HomeScreenUi({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-            child: Column(
+    return BlocProvider(
+      create: (context) => getIt<HomeScreenCubit>()..fetchCategories(),
+      child: SingleChildScrollView(
+        child: Column(
           children: [
-            const CustomAppBar(),
             verticalSpace(10),
             MySearchBar(),
-            verticalSpace(10),
             Padding(
-              padding: const EdgeInsets.only(left: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
               child: Image.asset('assets/Frame 1000004533.png'),
             ),
             verticalSpace(10),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: SizedBox(
-                height: 50,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: Tabs.length,
-                  itemBuilder: (context, index) {
-                    return FittedBox(
-                      child: Container(
-                        height: 40,
-                        margin: EdgeInsets.all(8.0),
-                        padding: EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.pinkAccent[100]?.withOpacity(.5)),
-                        child: Center(
-                          child: FittedBox(
-                            child: Text(
-                              Tabs[index],
-                              style: TextStyles.font14BlackW400,
-                            ),
-                          ),
-                        ),
+            BlocBuilder<HomeScreenCubit, HomeScreenState>(
+              buildWhen: (prev, current) =>
+                  current.event == HomeStateEvent.fetchingCategories,
+              builder: (context, state) {
+                return state.categoriesState.when(
+                  loading: () => const Center(
+                    child: CircularProgressIndicator.adaptive(),
+                  ),
+                  error: (errorMsg) => Center(
+                    child: Text(errorMsg),
+                  ),
+                  loaded: (data) => CategriesTabList(
+                    categoriesNames: (data)
+                        .map((category) => category.name as String)
+                        .toList(),
+                    onCategoryChanged: (index) {
+                      final category = data[index].name;
+                      context
+                          .read<HomeScreenCubit>()
+                          .fetchProducts(category as String);
+                    },
+                  ),
+                  initial: () => const SizedBox.shrink(),
+                );
+              },
+            ),
+            Expanded(
+              child: BlocBuilder<HomeScreenCubit, HomeScreenState>(
+                buildWhen: (prev, current) =>
+                    current.event == HomeStateEvent.fetchingProducts,
+                builder: (context, state) {
+                  return state.productsState.when(
+                    loading: () => const Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    ),
+                    error: (errorMsg) => Center(
+                      child: Text(errorMsg),
+                    ),
+                    initial: () => const Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    ),
+                    loaded: (data) => GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 5,
+                        mainAxisExtent: 255,
                       ),
-                    );
-                  },
-                ),
+                      itemCount: data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        final product =
+                            data[index] as CategoryProductResponseModel;
+                        return MyProductsListItem(
+                          id: product.id,
+                          title: product.title,
+                          imageUrl: product.image,
+                          rating: product.rating.rate,
+                          price: product.price,
+                        );
+                      },
+                    ),
+                  );
+                },
               ),
             ),
-            const Wrap(
-              direction: Axis.horizontal,
-              spacing: 20,
-              runSpacing: 15,
-              children: [
-                MyProudectsList(),
-                MyProudectsList(),
-                MyProudectsList(),
-                MyProudectsList(),
-                MyProudectsList(),
-              ],
-            ),
           ],
-        )),
+        ),
       ),
     );
   }

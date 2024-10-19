@@ -1,9 +1,11 @@
+import 'package:diva/features/home_Screen/ui/weights/custom_appbar.dart';
+import 'package:diva/features/profile/ui/profile_screen.dart';
+import 'package:diva/features/wishlist_screen/ui/wishlist.dart';
 import 'package:flutter/material.dart';
 
-import '../Catecroies.dart';
+import '../../../categeries_secreen/ui/categories_tab.dart';
 import '../card.dart';
 import '../home_Screen_Ui.dart';
-import '../likes.dart';
 
 class MyBottomNavBar extends StatefulWidget {
   const MyBottomNavBar({super.key});
@@ -16,9 +18,29 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     HomeScreenUi(),
-    const Catecroies(),
+    Catecroies(),
     const card(),
-    const likes()
+    const Wishlist(),
+    const ProfileScreen()
+  ];
+
+  final _appBars = [
+    const PreferredSize(
+      preferredSize: Size.fromHeight(60),
+      child: CustomAppBar(),
+    ),
+    AppBar(
+      title: const Text('Category'),
+    ),
+    AppBar(
+      title: const Text('Cart'),
+    ),
+    AppBar(
+      title: const Text('Wishlist'),
+    ),
+    AppBar(
+      title: const Text('Profile'),
+    ),
   ];
 
   void _onItemTapped(int index) {
@@ -30,7 +52,8 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      appBar: _appBars[_selectedIndex],
+      body: SafeArea(
         child: _widgetOptions.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -55,6 +78,11 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
             BottomNavigationBarItem(
                 icon: Container(
                     height: 25, width: 20, child: const Icon(Icons.favorite)),
+                backgroundColor: Colors.white,
+                label: ""),
+            BottomNavigationBarItem(
+                icon: Container(
+                    height: 25, width: 20, child: const Icon(Icons.person)),
                 backgroundColor: Colors.white,
                 label: ""),
           ],
