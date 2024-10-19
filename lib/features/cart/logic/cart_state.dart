@@ -4,9 +4,7 @@ part 'cart_state.freezed.dart';
 
 @freezed
 sealed class CartState<T> with _$CartState<T> {
-  const factory CartState.initial() = _Initial;
-
-  const factory CartState.signupLoading() = CartLoading;
-  const factory CartState.signupSuccess(T data) = CartSuccess<T>;
-  const factory CartState.signupError({required String error}) = CartError;
+  const factory CartState.cartLoading() = CartLoading;
+  const factory CartState.cartSuccess(T data) = CartSuccess<T>;
+  const factory CartState.cartError({required String error}) = CartError;
 }

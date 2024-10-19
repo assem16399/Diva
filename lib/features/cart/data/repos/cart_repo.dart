@@ -16,6 +16,7 @@ class CartRepo {
         CartModel(cartBasicData: cartBasicData, cartProducts: cartProducts),
       );
     } catch (e) {
+      rethrow;
       return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
@@ -24,7 +25,8 @@ class CartRepo {
     CartResponseModel cartData,
   ) async {
     try {
-      final updatedCartData = await _apiService.updateCartData(cartData);
+      final updatedCartData =
+          await _apiService.updateCartData(cartData.toJson());
       final cartProducts = await _getCartProducts(updatedCartData.products);
       return ApiResult.success(
         CartModel(cartBasicData: updatedCartData, cartProducts: cartProducts),
@@ -39,7 +41,10 @@ class CartRepo {
   ) async {
     final cartProducts = <CartProductResponseModel>[];
     for (final product in summarizedCartItems) {
-      final productData = await _apiService.getProductData(product.productId);
+      final productData = await _apiService.getProductData(
+        product.productId.toString(),
+        quantity: product.quantity,
+      );
       cartProducts.add(productData);
     }
     return cartProducts;

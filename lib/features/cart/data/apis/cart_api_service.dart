@@ -12,13 +12,14 @@ abstract class CartApiService {
   @GET(CartApiConstants.cartEP)
   Future<CartResponseModel> getCartData();
 
-  @GET('${CartApiConstants.productDetailsEp} / {id}')
+  @GET('${CartApiConstants.productDetailsEp}/{id}')
   Future<CartProductResponseModel> getProductData(
-    @Path('id') String id,
-  );
+    @Path('id') String id, {
+    required int quantity,
+  });
 
   @PUT(CartApiConstants.cartEP)
   Future<CartResponseModel> updateCartData(
-    @Body() CartResponseModel body,
+    @Body() Map<String, dynamic> body,
   );
 }

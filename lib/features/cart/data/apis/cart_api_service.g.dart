@@ -57,7 +57,10 @@ class _CartApiService implements CartApiService {
   }
 
   @override
-  Future<CartProductResponseModel> getProductData(String id) async {
+  Future<CartProductResponseModel> getProductData(
+    String id, {
+    required int quantity,
+  }) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
@@ -69,7 +72,7 @@ class _CartApiService implements CartApiService {
     )
         .compose(
           _dio.options,
-          'products / ${id}',
+          'products/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -81,7 +84,8 @@ class _CartApiService implements CartApiService {
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
     late CartProductResponseModel _value;
     try {
-      _value = CartProductResponseModel.fromJson(_result.data!);
+      _value =
+          CartProductResponseModel.fromJson(_result.data!, quantity: quantity);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -90,7 +94,7 @@ class _CartApiService implements CartApiService {
   }
 
   @override
-  Future<CartResponseModel> updateCartData(CartResponseModel body) async {
+  Future<CartResponseModel> updateCartData(Map<String, dynamic> body) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

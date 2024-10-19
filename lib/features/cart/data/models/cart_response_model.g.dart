@@ -8,7 +8,7 @@ part of 'cart_response_model.dart';
 
 CartResponseModel _$CartResponseModelFromJson(Map<String, dynamic> json) =>
     CartResponseModel(
-      id: json['id'] as String,
+      id: (json['id'] as num).toInt(),
       date: json['date'] as String,
       products: (json['products'] as List<dynamic>)
           .map((e) =>
@@ -26,7 +26,7 @@ Map<String, dynamic> _$CartResponseModelToJson(CartResponseModel instance) =>
 SummarizedCartItemModel _$SummarizedCartItemModelFromJson(
         Map<String, dynamic> json) =>
     SummarizedCartItemModel(
-      productId: json['productId'] as String,
+      productId: (json['productId'] as num).toInt(),
       quantity: (json['quantity'] as num).toInt(),
     );
 
@@ -35,20 +35,4 @@ Map<String, dynamic> _$SummarizedCartItemModelToJson(
     <String, dynamic>{
       'productId': instance.productId,
       'quantity': instance.quantity,
-    };
-
-CartProductResponseModel _$CartProductResponseModelFromJson(
-        Map<String, dynamic> json) =>
-    CartProductResponseModel(
-      id: json['id'] as String,
-      title: json['title'] as String,
-      price: (json['price'] as num).toDouble(),
-    );
-
-Map<String, dynamic> _$CartProductResponseModelToJson(
-        CartProductResponseModel instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'title': instance.title,
-      'price': instance.price,
     };

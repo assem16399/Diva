@@ -1,4 +1,7 @@
 import 'package:diva/core/networking/dio_factory.dart';
+import 'package:diva/features/cart/data/apis/cart_api_service.dart';
+import 'package:diva/features/cart/data/repos/cart_repo.dart';
+import 'package:diva/features/cart/logic/cart_cubit.dart';
 import 'package:diva/features/signup/data/apis/signup_api_service.dart';
 import 'package:diva/features/signup/data/repos/signup_repos.dart';
 import 'package:diva/features/signup/logic/signup_cubit.dart';
@@ -14,5 +17,10 @@ void setupGetIt() {
   getIt
     ..registerLazySingleton<SignupApiService>(() => SignupApiService(dio))
     ..registerLazySingleton<SignupRepo>(() => SignupRepo(getIt()))
-    ..registerFactory<SignupCubit>(() => SignupCubit(getIt()));
+    ..registerFactory<SignupCubit>(() => SignupCubit(getIt()))
+
+    // Cart
+    ..registerLazySingleton<CartApiService>(() => CartApiService(dio))
+    ..registerLazySingleton<CartRepo>(() => CartRepo(getIt()))
+    ..registerFactory<CartCubit>(() => CartCubit(getIt()));
 }

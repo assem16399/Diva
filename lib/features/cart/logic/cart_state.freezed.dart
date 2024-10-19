@@ -18,51 +18,45 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$CartState<T> {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() signupLoading,
-    required TResult Function(T data) signupSuccess,
-    required TResult Function(String error) signupError,
+    required TResult Function() cartLoading,
+    required TResult Function(T data) cartSuccess,
+    required TResult Function(String error) cartError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? signupLoading,
-    TResult? Function(T data)? signupSuccess,
-    TResult? Function(String error)? signupError,
+    TResult? Function()? cartLoading,
+    TResult? Function(T data)? cartSuccess,
+    TResult? Function(String error)? cartError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? signupLoading,
-    TResult Function(T data)? signupSuccess,
-    TResult Function(String error)? signupError,
+    TResult Function()? cartLoading,
+    TResult Function(T data)? cartSuccess,
+    TResult Function(String error)? cartError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(CartLoading<T> value) signupLoading,
-    required TResult Function(CartSuccess<T> value) signupSuccess,
-    required TResult Function(CartError<T> value) signupError,
+    required TResult Function(CartLoading<T> value) cartLoading,
+    required TResult Function(CartSuccess<T> value) cartSuccess,
+    required TResult Function(CartError<T> value) cartError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(CartLoading<T> value)? signupLoading,
-    TResult? Function(CartSuccess<T> value)? signupSuccess,
-    TResult? Function(CartError<T> value)? signupError,
+    TResult? Function(CartLoading<T> value)? cartLoading,
+    TResult? Function(CartSuccess<T> value)? cartSuccess,
+    TResult? Function(CartError<T> value)? cartError,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(CartLoading<T> value)? signupLoading,
-    TResult Function(CartSuccess<T> value)? signupSuccess,
-    TResult Function(CartError<T> value)? signupError,
+    TResult Function(CartLoading<T> value)? cartLoading,
+    TResult Function(CartSuccess<T> value)? cartSuccess,
+    TResult Function(CartError<T> value)? cartError,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -87,123 +81,6 @@ class _$CartStateCopyWithImpl<T, $Res, $Val extends CartState<T>>
 
   /// Create a copy of CartState
   /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-abstract class _$$InitialImplCopyWith<T, $Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl<T> value, $Res Function(_$InitialImpl<T>) then) =
-      __$$InitialImplCopyWithImpl<T, $Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<T, $Res>
-    extends _$CartStateCopyWithImpl<T, $Res, _$InitialImpl<T>>
-    implements _$$InitialImplCopyWith<T, $Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl<T> _value, $Res Function(_$InitialImpl<T>) _then)
-      : super(_value, _then);
-
-  /// Create a copy of CartState
-  /// with the given fields replaced by the non-null parameter values.
-}
-
-/// @nodoc
-
-class _$InitialImpl<T> implements _Initial<T> {
-  const _$InitialImpl();
-
-  @override
-  String toString() {
-    return 'CartState<$T>.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl<T>);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() signupLoading,
-    required TResult Function(T data) signupSuccess,
-    required TResult Function(String error) signupError,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? signupLoading,
-    TResult? Function(T data)? signupSuccess,
-    TResult? Function(String error)? signupError,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? signupLoading,
-    TResult Function(T data)? signupSuccess,
-    TResult Function(String error)? signupError,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(CartLoading<T> value) signupLoading,
-    required TResult Function(CartSuccess<T> value) signupSuccess,
-    required TResult Function(CartError<T> value) signupError,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(CartLoading<T> value)? signupLoading,
-    TResult? Function(CartSuccess<T> value)? signupSuccess,
-    TResult? Function(CartError<T> value)? signupError,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(CartLoading<T> value)? signupLoading,
-    TResult Function(CartSuccess<T> value)? signupSuccess,
-    TResult Function(CartError<T> value)? signupError,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial<T> implements CartState<T> {
-  const factory _Initial() = _$InitialImpl<T>;
 }
 
 /// @nodoc
@@ -232,7 +109,7 @@ class _$CartLoadingImpl<T> implements CartLoading<T> {
 
   @override
   String toString() {
-    return 'CartState<$T>.signupLoading()';
+    return 'CartState<$T>.cartLoading()';
   }
 
   @override
@@ -247,36 +124,33 @@ class _$CartLoadingImpl<T> implements CartLoading<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() signupLoading,
-    required TResult Function(T data) signupSuccess,
-    required TResult Function(String error) signupError,
+    required TResult Function() cartLoading,
+    required TResult Function(T data) cartSuccess,
+    required TResult Function(String error) cartError,
   }) {
-    return signupLoading();
+    return cartLoading();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? signupLoading,
-    TResult? Function(T data)? signupSuccess,
-    TResult? Function(String error)? signupError,
+    TResult? Function()? cartLoading,
+    TResult? Function(T data)? cartSuccess,
+    TResult? Function(String error)? cartError,
   }) {
-    return signupLoading?.call();
+    return cartLoading?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? signupLoading,
-    TResult Function(T data)? signupSuccess,
-    TResult Function(String error)? signupError,
+    TResult Function()? cartLoading,
+    TResult Function(T data)? cartSuccess,
+    TResult Function(String error)? cartError,
     required TResult orElse(),
   }) {
-    if (signupLoading != null) {
-      return signupLoading();
+    if (cartLoading != null) {
+      return cartLoading();
     }
     return orElse();
   }
@@ -284,36 +158,33 @@ class _$CartLoadingImpl<T> implements CartLoading<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(CartLoading<T> value) signupLoading,
-    required TResult Function(CartSuccess<T> value) signupSuccess,
-    required TResult Function(CartError<T> value) signupError,
+    required TResult Function(CartLoading<T> value) cartLoading,
+    required TResult Function(CartSuccess<T> value) cartSuccess,
+    required TResult Function(CartError<T> value) cartError,
   }) {
-    return signupLoading(this);
+    return cartLoading(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(CartLoading<T> value)? signupLoading,
-    TResult? Function(CartSuccess<T> value)? signupSuccess,
-    TResult? Function(CartError<T> value)? signupError,
+    TResult? Function(CartLoading<T> value)? cartLoading,
+    TResult? Function(CartSuccess<T> value)? cartSuccess,
+    TResult? Function(CartError<T> value)? cartError,
   }) {
-    return signupLoading?.call(this);
+    return cartLoading?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(CartLoading<T> value)? signupLoading,
-    TResult Function(CartSuccess<T> value)? signupSuccess,
-    TResult Function(CartError<T> value)? signupError,
+    TResult Function(CartLoading<T> value)? cartLoading,
+    TResult Function(CartSuccess<T> value)? cartSuccess,
+    TResult Function(CartError<T> value)? cartError,
     required TResult orElse(),
   }) {
-    if (signupLoading != null) {
-      return signupLoading(this);
+    if (cartLoading != null) {
+      return cartLoading(this);
     }
     return orElse();
   }
@@ -366,7 +237,7 @@ class _$CartSuccessImpl<T> implements CartSuccess<T> {
 
   @override
   String toString() {
-    return 'CartState<$T>.signupSuccess(data: $data)';
+    return 'CartState<$T>.cartSuccess(data: $data)';
   }
 
   @override
@@ -393,36 +264,33 @@ class _$CartSuccessImpl<T> implements CartSuccess<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() signupLoading,
-    required TResult Function(T data) signupSuccess,
-    required TResult Function(String error) signupError,
+    required TResult Function() cartLoading,
+    required TResult Function(T data) cartSuccess,
+    required TResult Function(String error) cartError,
   }) {
-    return signupSuccess(data);
+    return cartSuccess(data);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? signupLoading,
-    TResult? Function(T data)? signupSuccess,
-    TResult? Function(String error)? signupError,
+    TResult? Function()? cartLoading,
+    TResult? Function(T data)? cartSuccess,
+    TResult? Function(String error)? cartError,
   }) {
-    return signupSuccess?.call(data);
+    return cartSuccess?.call(data);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? signupLoading,
-    TResult Function(T data)? signupSuccess,
-    TResult Function(String error)? signupError,
+    TResult Function()? cartLoading,
+    TResult Function(T data)? cartSuccess,
+    TResult Function(String error)? cartError,
     required TResult orElse(),
   }) {
-    if (signupSuccess != null) {
-      return signupSuccess(data);
+    if (cartSuccess != null) {
+      return cartSuccess(data);
     }
     return orElse();
   }
@@ -430,36 +298,33 @@ class _$CartSuccessImpl<T> implements CartSuccess<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(CartLoading<T> value) signupLoading,
-    required TResult Function(CartSuccess<T> value) signupSuccess,
-    required TResult Function(CartError<T> value) signupError,
+    required TResult Function(CartLoading<T> value) cartLoading,
+    required TResult Function(CartSuccess<T> value) cartSuccess,
+    required TResult Function(CartError<T> value) cartError,
   }) {
-    return signupSuccess(this);
+    return cartSuccess(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(CartLoading<T> value)? signupLoading,
-    TResult? Function(CartSuccess<T> value)? signupSuccess,
-    TResult? Function(CartError<T> value)? signupError,
+    TResult? Function(CartLoading<T> value)? cartLoading,
+    TResult? Function(CartSuccess<T> value)? cartSuccess,
+    TResult? Function(CartError<T> value)? cartError,
   }) {
-    return signupSuccess?.call(this);
+    return cartSuccess?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(CartLoading<T> value)? signupLoading,
-    TResult Function(CartSuccess<T> value)? signupSuccess,
-    TResult Function(CartError<T> value)? signupError,
+    TResult Function(CartLoading<T> value)? cartLoading,
+    TResult Function(CartSuccess<T> value)? cartSuccess,
+    TResult Function(CartError<T> value)? cartError,
     required TResult orElse(),
   }) {
-    if (signupSuccess != null) {
-      return signupSuccess(this);
+    if (cartSuccess != null) {
+      return cartSuccess(this);
     }
     return orElse();
   }
@@ -520,7 +385,7 @@ class _$CartErrorImpl<T> implements CartError<T> {
 
   @override
   String toString() {
-    return 'CartState<$T>.signupError(error: $error)';
+    return 'CartState<$T>.cartError(error: $error)';
   }
 
   @override
@@ -545,36 +410,33 @@ class _$CartErrorImpl<T> implements CartError<T> {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() signupLoading,
-    required TResult Function(T data) signupSuccess,
-    required TResult Function(String error) signupError,
+    required TResult Function() cartLoading,
+    required TResult Function(T data) cartSuccess,
+    required TResult Function(String error) cartError,
   }) {
-    return signupError(error);
+    return cartError(error);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? signupLoading,
-    TResult? Function(T data)? signupSuccess,
-    TResult? Function(String error)? signupError,
+    TResult? Function()? cartLoading,
+    TResult? Function(T data)? cartSuccess,
+    TResult? Function(String error)? cartError,
   }) {
-    return signupError?.call(error);
+    return cartError?.call(error);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? signupLoading,
-    TResult Function(T data)? signupSuccess,
-    TResult Function(String error)? signupError,
+    TResult Function()? cartLoading,
+    TResult Function(T data)? cartSuccess,
+    TResult Function(String error)? cartError,
     required TResult orElse(),
   }) {
-    if (signupError != null) {
-      return signupError(error);
+    if (cartError != null) {
+      return cartError(error);
     }
     return orElse();
   }
@@ -582,36 +444,33 @@ class _$CartErrorImpl<T> implements CartError<T> {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial<T> value) initial,
-    required TResult Function(CartLoading<T> value) signupLoading,
-    required TResult Function(CartSuccess<T> value) signupSuccess,
-    required TResult Function(CartError<T> value) signupError,
+    required TResult Function(CartLoading<T> value) cartLoading,
+    required TResult Function(CartSuccess<T> value) cartSuccess,
+    required TResult Function(CartError<T> value) cartError,
   }) {
-    return signupError(this);
+    return cartError(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial<T> value)? initial,
-    TResult? Function(CartLoading<T> value)? signupLoading,
-    TResult? Function(CartSuccess<T> value)? signupSuccess,
-    TResult? Function(CartError<T> value)? signupError,
+    TResult? Function(CartLoading<T> value)? cartLoading,
+    TResult? Function(CartSuccess<T> value)? cartSuccess,
+    TResult? Function(CartError<T> value)? cartError,
   }) {
-    return signupError?.call(this);
+    return cartError?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial<T> value)? initial,
-    TResult Function(CartLoading<T> value)? signupLoading,
-    TResult Function(CartSuccess<T> value)? signupSuccess,
-    TResult Function(CartError<T> value)? signupError,
+    TResult Function(CartLoading<T> value)? cartLoading,
+    TResult Function(CartSuccess<T> value)? cartSuccess,
+    TResult Function(CartError<T> value)? cartError,
     required TResult orElse(),
   }) {
-    if (signupError != null) {
-      return signupError(this);
+    if (cartError != null) {
+      return cartError(this);
     }
     return orElse();
   }

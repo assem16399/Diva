@@ -13,9 +13,23 @@ class CartResponseModel {
   factory CartResponseModel.fromJson(Map<String, dynamic> json) =>
       _$CartResponseModelFromJson(json);
 
-  final String id;
+  final int id;
   final String date;
   final List<SummarizedCartItemModel> products;
+
+  Map<String, dynamic> toJson() => _$CartResponseModelToJson(this);
+
+  CartResponseModel copyWith({
+    int? id,
+    String? date,
+    List<SummarizedCartItemModel>? products,
+  }) {
+    return CartResponseModel(
+      id: id ?? this.id,
+      date: date ?? this.date,
+      products: products ?? this.products,
+    );
+  }
 }
 
 @JsonSerializable()
@@ -27,22 +41,73 @@ class SummarizedCartItemModel {
 
   factory SummarizedCartItemModel.fromJson(Map<String, dynamic> json) =>
       _$SummarizedCartItemModelFromJson(json);
-  final String productId;
+  final int productId;
   final int quantity;
+
+  // create toJson method
+  Map<String, dynamic> toJson() => _$SummarizedCartItemModelToJson(this);
+
+  SummarizedCartItemModel copyWith({
+    int? productId,
+    int? quantity,
+  }) {
+    return SummarizedCartItemModel(
+      productId: productId ?? this.productId,
+      quantity: quantity ?? this.quantity,
+    );
+  }
 }
 
-@JsonSerializable()
 class CartProductResponseModel {
   CartProductResponseModel({
     required this.id,
     required this.title,
     required this.price,
+    required this.qty,
+    required this.image,
   });
 
-  factory CartProductResponseModel.fromJson(Map<String, dynamic> json) =>
-      _$CartProductResponseModelFromJson(json);
+  factory CartProductResponseModel.fromJson(
+    Map<String, dynamic> json, {
+    required int quantity,
+  }) =>
+      CartProductResponseModel(
+        id: json['id'] as int?,
+        title: json['title'] as String?,
+        price: json['price'] as double?,
+        image: json['image'] as String?,
+        qty: quantity,
+      );
 
-  final String id;
-  final String title;
-  final double price;
+  final int? id;
+  final String? title;
+  final String? image;
+  final double? price;
+  final int qty;
+
+  // create toJson method
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'title': title,
+        'price': price,
+        'image': image,
+      };
+
+  double get totalPrice => price! * qty;
+
+  CartProductResponseModel copyWith({
+    int? id,
+    String? title,
+    double? price,
+    String? image,
+    int? qty,
+  }) {
+    return CartProductResponseModel(
+      id: id ?? this.id,
+      title: title ?? this.title,
+      price: price ?? this.price,
+      image: image ?? this.image,
+      qty: qty ?? this.qty,
+    );
+  }
 }
