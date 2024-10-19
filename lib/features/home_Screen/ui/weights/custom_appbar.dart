@@ -5,48 +5,58 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        height: 35,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Column(
+    return SafeArea(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Container(
-                        width: 50,
-                        height: 30,
-                        child: Image.asset(
-                          "assets/account.png",
-                          color: Colors.pinkAccent,
-                        )),
-                    Text("Welcome , Dalida", style: TextStyle(fontSize: 17)),
+                    Row(
+                      children: [
+                        SizedBox(
+                            width: 50,
+                            height: 30,
+                            child: Image.asset(
+                              'assets/account.png',
+                              color: Colors.pinkAccent,
+                            )),
+                        Text('Welcome , Dalida',
+                            style: TextStyle(fontSize: 17)),
+                      ],
+                    ),
+                  ],
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Row(
+                      children: [
+                        SizedBox(
+                            width: 40,
+                            height: 30,
+                            child: Image.asset(
+                                'assets/icons8-notification-128.png')),
+                        SizedBox(
+                            width: 40,
+                            height: 30,
+                            child: Image.asset('assets/search.png'))
+                      ],
+                    ),
                   ],
                 ),
               ],
             ),
-            Column(
-              children: [
-                Row(
-                  children: [
-                    Container(
-                        width: 40,
-                        height: 30,
-                        child:
-                            Image.asset("assets/icons8-notification-128.png")),
-                    Container(
-                        width: 40,
-                        height: 30,
-                        child: Image.asset('assets/search.png'))
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

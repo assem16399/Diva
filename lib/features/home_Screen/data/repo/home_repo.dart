@@ -3,27 +3,15 @@ import 'package:diva/core/networking/api_result.dart';
 import 'package:diva/features/home_Screen/data/apis/home_api_service.dart';
 import 'package:diva/features/home_Screen/data/models/categories_response_model.dart';
 import 'package:diva/features/home_Screen/data/models/category_product_response_model.dart';
-import 'package:diva/features/home_Screen/data/models/home_model.dart';
 
-class CategoryRepository {
-  CategoryRepository(this._apiService);
+class HomeRepository {
+  HomeRepository(this._HomeApiService);
 
-  final HomeApiService _apiService;
-
-  Future<ApiResult<HomeModel>> getHomeData() async {
-    try {
-      final homeDataResponses = await _sendHomeDataRequestsConcurrently();
-      return ApiResult.success(
-        _getHomeModelFromConcurrentResponses(homeDataResponses),
-      );
-    } catch (error) {
-      return ApiResult.failure(ApiErrorHandler.handle(error));
-    }
-  }
+  final HomeApiService _HomeApiService;
 
   Future<ApiResult<CategoriesResponseModel>> getCategories() async {
     try {
-      final categoriesResponseModel = await _apiService.fetchCategories();
+      final categoriesResponseModel = await _HomeApiService.fetchCategories();
       return ApiResult.success(categoriesResponseModel);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));
@@ -33,7 +21,8 @@ class CategoryRepository {
   Future<ApiResult<List<CategoryProductResponseModel>>>
       getSpecificCategoriesProducts(String categoryName) async {
     try {
-      final categoryProductsResponseModel = await _apiService.fetchProductsOf(
+      final categoryProductsResponseModel =
+          await _HomeApiService.fetchProductsOf(
         category: categoryName,
       );
       return ApiResult.success(categoryProductsResponseModel);
@@ -46,26 +35,10 @@ class CategoryRepository {
       getAllCategoriesProducts() async {
     try {
       final categoriesProductsResponseModel =
-          await _apiService.fetchAllProducts();
+          await _HomeApiService.fetchAllProducts();
       return ApiResult.success(categoriesProductsResponseModel);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }
-  }
-
-  Future<List<Object>> _sendHomeDataRequestsConcurrently() async {
-    final responses = await Future.wait([
-      _apiService.fetchCategories(),
-      _apiService.fetchAllProducts(),
-    ]);
-
-    return responses;
-  }
-
-  HomeModel _getHomeModelFromConcurrentResponses(List<Object> responses) {
-    return HomeModel(
-      categories: responses[0] as CategoriesResponseModel,
-      allProducts: responses[1] as List<CategoryProductResponseModel>,
-    );
   }
 }

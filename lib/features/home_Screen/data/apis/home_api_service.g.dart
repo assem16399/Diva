@@ -45,7 +45,7 @@ class _HomeApiService implements HomeApiService {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<List<String>>(_options);
+    final _result = await _dio.fetch<List<dynamic>>(_options);
     late CategoriesResponseModel _value;
     try {
       _value = CategoriesResponseModel.fromJson(_result.data!);
@@ -70,7 +70,7 @@ class _HomeApiService implements HomeApiService {
     )
         .compose(
           _dio.options,
-          'https://fakestoreapi.com/products/category//${category}',
+          'https://fakestoreapi.com/products/category/${category}',
           queryParameters: queryParameters,
           data: _data,
         )

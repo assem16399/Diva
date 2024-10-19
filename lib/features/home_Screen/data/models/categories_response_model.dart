@@ -7,11 +7,11 @@ class CategoryResponseModel {
 class CategoriesResponseModel {
   CategoriesResponseModel({required this.categories});
 
-  factory CategoriesResponseModel.fromJson(List<String> json) {
+  factory CategoriesResponseModel.fromJson(List<dynamic> json) {
     return CategoriesResponseModel(
       categories: List<CategoryResponseModel>.from(
         json.map(
-          (categoryName) => CategoryResponseModel(name: categoryName),
+          (categoryName) => CategoryResponseModel(name: categoryName as String),
         ),
       ),
     );
