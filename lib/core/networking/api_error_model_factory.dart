@@ -4,6 +4,11 @@ import 'package:diva/core/networking/api_error_model.dart';
 // response whether it's a FirebaseAuthErrorModel or a generic ApiErrorModel
 abstract class ApiErrorModelFactory {
   static ApiErrorModel createApiErrorModel(dynamic json) {
+    if (json is! Map<String, dynamic>) {
+      return ApiErrorModel(
+        message: 'Unknown error occurred',
+      );
+    }
     if (json['error'] != null) {
       return FirebaseAuthErrorModel.fromJson(
         json['error'] as Map<String, dynamic>,

@@ -13,7 +13,7 @@ class ProductDescription extends StatelessWidget {
     return Text(
       description,
       style: TextStyles.font12DarkGrayW400.copyWith(),
-      maxLines: 3,
+      maxLines: 4,
       overflow: TextOverflow.ellipsis,
     );
   }

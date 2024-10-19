@@ -16,7 +16,6 @@ class CartRepo {
         CartModel(cartBasicData: cartBasicData, cartProducts: cartProducts),
       );
     } catch (e) {
-      rethrow;
       return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
