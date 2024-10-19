@@ -37,7 +37,7 @@ class _ProductDetailsApiService implements ProductDetailsApiService {
     )
         .compose(
           _dio.options,
-          '/product//${productId}',
+          '/products/${productId}',
           queryParameters: queryParameters,
           data: _data,
         )

@@ -8,9 +8,10 @@ class ProductDetailsRepo {
 
   final ProductDetailsApiService _apiService;
 
-  Future<ApiResult<SingleProductModel>> getProductDetails(String id) async {
+  Future<ApiResult<SingleProductModel>> getProductDetails(int id) async {
     try {
-      final response = await _apiService.getProductDetails(productId: id);
+      final response =
+          await _apiService.getProductDetails(productId: id.toString());
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));
