@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'cart_api_service.dart';
+part of 'manage_product_api_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,13 +8,13 @@ part of 'cart_api_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _CartApiService implements CartApiService {
-  _CartApiService(
+class _ManageProductApiService implements ManageProductApiService {
+  _ManageProductApiService(
     this._dio, {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://fakestoreapi.com/';
+    baseUrl ??= 'https://fakestoreapi.com';
   }
 
   final Dio _dio;
@@ -24,19 +24,19 @@ class _CartApiService implements CartApiService {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<CartResponseModel> getCartData() async {
+  Future<List<String>> getAvailableCategories() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<CartResponseModel>(Options(
+    final _options = _setStreamType<List<String>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'carts/5',
+          '/categories',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -45,10 +45,10 @@ class _CartApiService implements CartApiService {
           _dio.options.baseUrl,
           baseUrl,
         )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CartResponseModel _value;
+    final _result = await _dio.fetch<List<dynamic>>(_options);
+    late List<String> _value;
     try {
-      _value = CartResponseModel.fromJson(_result.data!);
+      _value = _result.data!.cast<String>();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -57,57 +57,58 @@ class _CartApiService implements CartApiService {
   }
 
   @override
-  Future<CartProductResponseModel> getProductData(
-    String id, {
-    required int quantity,
-  }) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<CartProductResponseModel>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-        .compose(
-          _dio.options,
-          'products/${id}',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        )));
-    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CartProductResponseModel _value;
-    try {
-      _value =
-          CartProductResponseModel.fromJson(_result.data!, quantity: quantity);
-    } on Object catch (e, s) {
-      errorLogger?.logError(e, s, _options);
-      rethrow;
-    }
-    return _value;
-  }
-
-  @override
-  Future<CartResponseModel> updateCartData(Map<String, dynamic> body) async {
+  Future<ManageProductModel> addProduct(
+      {required ManageProductModel body}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(body);
-    final _options = _setStreamType<CartResponseModel>(Options(
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<ManageProductModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/products',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late ManageProductModel _value;
+    try {
+      _value = ManageProductModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<ManageProductModel> updateProduct({
+    required ManageProductModel body,
+    required String productId,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
+    final _options = _setStreamType<ManageProductModel>(Options(
       method: 'PUT',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'carts/5',
+          '/products/${productId}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -117,9 +118,9 @@ class _CartApiService implements CartApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late CartResponseModel _value;
+    late ManageProductModel _value;
     try {
-      _value = CartResponseModel.fromJson(_result.data!);
+      _value = ManageProductModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
