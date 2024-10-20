@@ -103,6 +103,12 @@ class TextStyles {
     color: Colors.black,
   );
 
+  static TextStyle font24BlackW600 = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: Colors.black,
+  );
+
   static TextStyle font20WhiteW600 = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.semiBold,

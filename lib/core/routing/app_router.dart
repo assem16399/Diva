@@ -3,6 +3,7 @@ import 'package:diva/core/routing/routes.dart';
 import 'package:diva/core/widgets/my_bottom_nav_bar.dart';
 import 'package:diva/features/cart/ui/cart_tab.dart';
 import 'package:diva/features/login/ui/login_screen.dart';
+import 'package:diva/features/manage_product/ui/manage_product_screen.dart';
 import 'package:diva/features/product_details/logic/product_details_cubit.dart';
 import 'package:diva/features/product_details/ui/product_details_screen.dart';
 import 'package:diva/features/signup/logic/signup_cubit.dart';
@@ -44,6 +45,10 @@ class AppRouter {
       case Routes.myBottomNavBar:
         return MaterialPageRoute(
           builder: (_) => const MyBottomNavBar(),
+        );
+      case Routes.manageProduct:
+        return MaterialPageRoute(
+          builder: (_) => const ManageProductScreen(),
         );
       default:
         return MaterialPageRoute(

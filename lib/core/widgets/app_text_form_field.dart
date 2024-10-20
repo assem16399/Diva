@@ -23,6 +23,8 @@ class AppTextFormField extends StatelessWidget {
     this.textInputType,
     this.autocorrect = false,
     this.prefixIcon,
+    this.borderRadius,
+    this.maxLines,
   });
 
   final String? hintText;
@@ -41,8 +43,9 @@ class AppTextFormField extends StatelessWidget {
   final void Function(String?)? onSaved;
   final void Function(String?)? onChanged;
   final bool autocorrect;
-
   final Widget? prefixIcon;
+  final BorderRadius? borderRadius;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -57,6 +60,7 @@ class AppTextFormField extends StatelessWidget {
       controller: controller,
       onTap: onTap,
       onChanged: onChanged,
+      maxLines: maxLines,
       validator: validator,
       onSaved: onSaved,
       style: TextStyles.font18BlackW400,
@@ -67,7 +71,7 @@ class AppTextFormField extends StatelessWidget {
         hintText: hintText,
         hintStyle: TextStyles.font18SemiTransparentBlackW400,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: borderRadius ?? BorderRadius.circular(30),
           borderSide: const BorderSide(
             width: 2,
             color: ColorsManager.lightGray,
@@ -75,7 +79,7 @@ class AppTextFormField extends StatelessWidget {
         ),
         enabledBorder: enabledBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: borderRadius ?? BorderRadius.circular(30),
               borderSide: const BorderSide(
                 width: 2,
                 color: ColorsManager.lightGray,
@@ -83,21 +87,21 @@ class AppTextFormField extends StatelessWidget {
             ),
         focusedBorder: focusedBorder ??
             OutlineInputBorder(
-              borderRadius: BorderRadius.circular(30),
+              borderRadius: borderRadius ?? BorderRadius.circular(30),
               borderSide: const BorderSide(
                 width: 2,
                 color: ColorsManager.vividRed,
               ),
             ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: borderRadius ?? BorderRadius.circular(30),
           borderSide: BorderSide(
             width: 2,
             color: Theme.of(context).colorScheme.error,
           ),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(30),
+          borderRadius: borderRadius ?? BorderRadius.circular(30),
           borderSide: BorderSide(
             width: 2,
             color: Theme.of(context).colorScheme.error,

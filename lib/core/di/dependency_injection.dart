@@ -21,8 +21,8 @@ void setupGetIt() {
     ..registerLazySingleton<SignupApiService>(() => SignupApiService(dio))
     ..registerLazySingleton<SignupRepo>(() => SignupRepo(getIt()))
     ..registerFactory<SignupCubit>(() => SignupCubit(getIt()))
-    // ProductDetails
 
+    // ProductDetails
     ..registerLazySingleton<ProductDetailsApiService>(
       () => ProductDetailsApiService(dio),
     )

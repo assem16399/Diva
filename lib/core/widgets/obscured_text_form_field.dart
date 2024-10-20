@@ -20,6 +20,8 @@ class ObscuredTextFormField extends StatefulWidget {
     this.onChanged,
     this.textInputType,
     this.autocorrect = false,
+    this.borderRadius,
+    this.maxLines,
   });
 
   final String? hintText;
@@ -37,7 +39,8 @@ class ObscuredTextFormField extends StatefulWidget {
   final void Function(String?)? onSaved;
   final void Function(String?)? onChanged;
   final bool autocorrect;
-
+  final BorderRadius? borderRadius;
+  final int? maxLines;
   @override
   State<ObscuredTextFormField> createState() => _ObscuredTextFormFieldState();
 }
@@ -74,7 +77,9 @@ class _ObscuredTextFormFieldState extends State<ObscuredTextFormField> {
       focusNode: widget.focusNode,
       controller: widget.controller,
       isObscureText: isObscure,
+      borderRadius: widget.borderRadius,
       hintText: widget.hintText,
+      maxLines: widget.maxLines,
       suffixIcon: IconButton(
         icon: Icon(
           isObscure ? Icons.visibility : Icons.visibility_off,
