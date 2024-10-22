@@ -3,7 +3,8 @@ class Routes {
 
   static const String loginScreen = '/login';
   static const String signupScreen = '/signup';
-  static const String homeScreen = '/HomeScreenUi';
-  static const String myBottomNavBar = '/MyBottomNavBar';
+  static const String myBottomNavBar = '/';
+  static const String cartScreen = '/cart';
   static const String productDetails = '/product-details';
+  static const String catecroies = '/catecroies';
 }

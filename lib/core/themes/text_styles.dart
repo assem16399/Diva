@@ -34,6 +34,11 @@ class TextStyles {
     fontWeight: FontWeight.w400,
     color: Colors.white,
   );
+  static TextStyle font16WhiteW600 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
 
   static TextStyle font14BlackW400 = TextStyle(
     fontSize: 14.sp,
@@ -98,9 +103,21 @@ class TextStyles {
     color: Colors.black,
   );
 
+  static TextStyle font20WhiteW600 = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: Colors.white,
+  );
+
   static TextStyle font16BlackW400 = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.regular,
+    color: Colors.black,
+  );
+
+  static TextStyle font16BlackW600 = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.semiBold,
     color: Colors.black,
   );
 
@@ -108,5 +125,11 @@ class TextStyles {
     fontSize: 10.sp,
     fontWeight: FontWeightHelper.regular,
     color: ColorsManager.vibrantPinkishRedColor,
+  );
+
+  static TextStyle font14WhiteW600 = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.semiBold,
+    color: Colors.white,
   );
 }

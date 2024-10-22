@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class likes extends StatelessWidget {
-  const likes({super.key});
+class CategoriesTab extends StatelessWidget {
+  const CategoriesTab({super.key});
 
   @override
   Widget build(BuildContext context) {
