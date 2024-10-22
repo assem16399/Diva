@@ -2,6 +2,9 @@ import 'package:diva/core/networking/dio_factory.dart';
 import 'package:diva/features/cart/data/apis/cart_api_service.dart';
 import 'package:diva/features/cart/data/repos/cart_repo.dart';
 import 'package:diva/features/cart/logic/cart_cubit.dart';
+import 'package:diva/features/categeries_secreen/data/apis/catecroies_api_service.dart';
+import 'package:diva/features/categeries_secreen/data/repo/categries_repo.dart';
+import 'package:diva/features/categeries_secreen/logic/categories_cubit.dart';
 import 'package:diva/features/home_Screen/data/apis/home_api_service.dart';
 import 'package:diva/features/home_Screen/data/repo/home_repo.dart';
 import 'package:diva/features/home_Screen/logic/home_screen_cubit.dart';
@@ -40,6 +43,12 @@ void setupGetIt() {
       () => ProductDetailsRepo(getIt()),
     )
     ..registerFactory<ProductDetailsCubit>(() => ProductDetailsCubit(getIt()))
+
+    // Categories
+    ..registerLazySingleton<CategriesApiService>(() => CategriesApiService(dio))
+    ..registerLazySingleton<CategoryRepository>(
+        () => CategoryRepository(getIt()))
+    ..registerFactory<CategoriesCubit>(() => CategoriesCubit(getIt()))
 
     // Cart
     ..registerLazySingleton<CartApiService>(() => CartApiService(dio))

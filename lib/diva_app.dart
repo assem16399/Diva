@@ -34,7 +34,7 @@ class DivaApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: Routes.loginScreen,
+        initialRoute: Routes.myBottomNavBar,
         onGenerateRoute: appRouter.generateRoute,
       ),
     );

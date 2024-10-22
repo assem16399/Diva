@@ -1,32 +1,25 @@
 import 'package:diva/core/di/dependency_injection.dart';
-import 'package:diva/core/helpers/spacing.dart';
-import 'package:diva/core/widgets/categories_tab_list.dart';
-import 'package:diva/features/home_Screen/data/models/category_product_response_model.dart';
-import 'package:diva/features/home_Screen/logic/home_screen_cubit.dart';
+import 'package:diva/core/widgets/categries_tab_list.dart';
+import 'package:diva/features/categeries_secreen/data/models/category_product_response_model.dart';
+import 'package:diva/features/categeries_secreen/logic/categories_state.dart';
 import 'package:diva/features/home_Screen/ui/widgets/my_products_list_item.dart';
-import 'package:diva/features/home_Screen/ui/widgets/my_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeTab extends StatelessWidget {
-  const HomeTab({super.key});
+import '../logic/categories_cubit.dart';
+
+class Catecroies extends StatelessWidget {
+  const Catecroies({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<HomeScreenCubit>()..fetchCategories(),
+      create: (context) => getIt<CategoriesCubit>()..fetchCategories(),
       child: Column(
         children: [
-          verticalSpace(10),
-          MySearchBar(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Image.asset('assets/Frame 1000004533.png'),
-          ),
-          verticalSpace(10),
-          BlocBuilder<HomeScreenCubit, HomeScreenState>(
+          BlocBuilder<CategoriesCubit, CategoriesState>(
             buildWhen: (prev, current) =>
-                current.event == HomeStateEvent.fetchingCategories,
+                current.event == CategoriesStateEvent.fetchingCategories,
             builder: (context, state) {
               return state.categoriesState.when(
                 loading: () => const Center(
@@ -42,7 +35,7 @@ class HomeTab extends StatelessWidget {
                   onCategoryChanged: (index) {
                     final category = data[index].name;
                     context
-                        .read<HomeScreenCubit>()
+                        .read<CategoriesCubit>()
                         .fetchProducts(category as String);
                   },
                 ),
@@ -51,9 +44,9 @@ class HomeTab extends StatelessWidget {
             },
           ),
           Expanded(
-            child: BlocBuilder<HomeScreenCubit, HomeScreenState>(
+            child: BlocBuilder<CategoriesCubit, CategoriesState>(
               buildWhen: (prev, current) =>
-                  current.event == HomeStateEvent.fetchingProducts,
+                  current.event == CategoriesStateEvent.fetchingProducts,
               builder: (context, state) {
                 return state.productsState.when(
                   loading: () => const Center(

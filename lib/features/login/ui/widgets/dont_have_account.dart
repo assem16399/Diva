@@ -1,3 +1,4 @@
+import 'package:diva/core/routing/routes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 
@@ -19,7 +20,10 @@ class DontHaveAccount extends StatelessWidget {
           TextSpan(
             text: ' Sign Up',
             style: TextStyles.font14PinkRegular,
-            recognizer: TapGestureRecognizer()..onTap = () {},
+            recognizer: TapGestureRecognizer()
+              ..onTap = () {
+                Navigator.pushNamed(context, Routes.signupScreen);
+              },
           ),
         ],
       ),
