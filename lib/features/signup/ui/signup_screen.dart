@@ -1,4 +1,5 @@
 import 'package:diva/core/helpers/spacing.dart';
+import 'package:diva/core/routing/routes.dart';
 import 'package:diva/core/themes/text_styles.dart';
 import 'package:diva/core/widgets/auth_screen_title.dart';
 import 'package:diva/features/signup/ui/widgets/signup_bloc_listener.dart';
@@ -55,7 +56,9 @@ class AlreadyHaveAnAccountText extends StatelessWidget {
           style: TextStyles.font14BlackW400,
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(Routes.loginScreen);
+          },
           child: Text(
             'Login',
             style: TextStyles.font14MainDeepPinkW400,

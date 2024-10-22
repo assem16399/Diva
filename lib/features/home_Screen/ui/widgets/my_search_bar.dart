@@ -14,21 +14,22 @@ class _MySearchBarState extends State<MySearchBar> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(
-            width: 270,
-            height: 50,
-            child: AppTextFormField(
-              hintText: 'search here',
-              prefixIcon: Icon(
-                Icons.search,
-                color: Colors.pinkAccent[100],
+          Expanded(
+            child: SizedBox(
+              height: 50,
+              child: AppTextFormField(
+                hintText: 'search here',
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.pinkAccent[100],
+                ),
+                controller: _textController,
+                autocorrect: true,
               ),
-              controller: _textController,
-              autocorrect: true,
             ),
           ),
           Container(

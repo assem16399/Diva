@@ -1,5 +1,5 @@
 import 'package:diva/features/cart/ui/cart_tab.dart';
-import 'package:diva/features/home_Screen/ui/categories_tab.dart';
+import 'package:diva/features/categeries_secreen/ui/categories_tab.dart';
 import 'package:diva/features/home_Screen/ui/home_tab.dart';
 import 'package:diva/features/home_Screen/ui/wishlist_tab.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +17,7 @@ class _MyBottomNavBarState extends State<MyBottomNavBar> {
   int _selectedIndex = 0;
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeTab(),
-    const CategoriesTab(),
+    const Catecroies(),
     const CartTab(),
     const WishlistTab(),
   ];
