@@ -1,15 +1,15 @@
 import 'package:diva/core/di/dependency_injection.dart';
 import 'package:diva/core/helpers/spacing.dart';
-import 'package:diva/core/widgets/categries_tab_list.dart';
-import 'package:diva/features/categeries_secreen/data/models/category_product_response_model.dart';
+import 'package:diva/core/widgets/categories_tab_list.dart';
+import 'package:diva/features/home_Screen/data/models/category_product_response_model.dart';
 import 'package:diva/features/home_Screen/logic/home_screen_cubit.dart';
-import 'package:diva/features/home_Screen/ui/weights/my_products_list_item.dart';
-import 'package:diva/features/home_Screen/ui/weights/my_search_bar.dart';
+import 'package:diva/features/home_Screen/ui/widgets/my_products_list_item.dart';
+import 'package:diva/features/home_Screen/ui/widgets/my_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class HomeScreenUi extends StatelessWidget {
-  const HomeScreenUi({super.key});
+class HomeTab extends StatelessWidget {
+  const HomeTab({super.key});
 
   @override
   Widget build(BuildContext context) {

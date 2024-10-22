@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+class HomeCustomAppBar extends StatelessWidget {
+  const HomeCustomAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +22,17 @@ class CustomAppBar extends StatelessWidget {
                     Row(
                       children: [
                         SizedBox(
-                            width: 50,
-                            height: 30,
-                            child: Image.asset(
-                              'assets/account.png',
-                              color: Colors.pinkAccent,
-                            )),
-                        Text('Welcome , Dalida',
-                            style: TextStyle(fontSize: 17)),
+                          width: 50,
+                          height: 30,
+                          child: Image.asset(
+                            'assets/account.png',
+                            color: Colors.pinkAccent,
+                          ),
+                        ),
+                        const Text(
+                          'Welcome, Dalida',
+                          style: TextStyle(fontSize: 17),
+                        ),
                       ],
                     ),
                   ],
