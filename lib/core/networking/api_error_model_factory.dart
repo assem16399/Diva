@@ -6,7 +6,7 @@ abstract class ApiErrorModelFactory {
   static ApiErrorModel createApiErrorModel(dynamic json) {
     if (json is! Map<String, dynamic>) {
       return ApiErrorModel(
-        message: 'Something went wrong! Please try again later.',
+        message: 'Unknown error occurred',
       );
     }
     if (json['error'] != null) {
