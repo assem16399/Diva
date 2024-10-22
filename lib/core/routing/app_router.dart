@@ -11,8 +11,6 @@ import 'package:diva/features/signup/ui/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../features/home_Screen/ui/weights/my_Bottom_NavBar.dart';
-
 class AppRouter {
   const AppRouter();
 

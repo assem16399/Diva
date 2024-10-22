@@ -1,73 +1,99 @@
+import 'package:diva/core/di/dependency_injection.dart';
 import 'package:diva/core/helpers/spacing.dart';
-import 'package:diva/core/themes/text_styles.dart';
+import 'package:diva/core/widgets/categories_tab_list.dart';
+import 'package:diva/features/home_Screen/data/models/category_product_response_model.dart';
+import 'package:diva/features/home_Screen/logic/home_screen_cubit.dart';
 import 'package:diva/features/home_Screen/ui/widgets/my_products_list_item.dart';
 import 'package:diva/features/home_Screen/ui/widgets/my_search_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeTab extends StatelessWidget {
   const HomeTab({super.key});
+
   @override
   Widget build(BuildContext context) {
-    const tabs = ['All', 'New in', 'Popular', 'Modest', 'Formal'];
-    return Column(
-      children: [
-        verticalSpace(10),
-        const MySearchBar(),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: Image.asset('assets/Frame 1000004533.png'),
-        ),
-        verticalSpace(10),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 24),
-          child: SizedBox(
-            height: 50,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: tabs.length,
-              itemBuilder: (context, index) {
-                return FittedBox(
-                  child: Container(
-                    height: 40,
-                    margin: const EdgeInsets.all(8),
-                    padding: const EdgeInsets.only(left: 15, right: 15),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Colors.pinkAccent[100]?.withOpacity(.5),
-                    ),
-                    child: Center(
-                      child: FittedBox(
-                        child: Text(
-                          tabs[index],
-                          style: TextStyles.font14BlackW400,
-                        ),
-                      ),
-                    ),
+    return BlocProvider(
+      create: (context) => getIt<HomeScreenCubit>()..fetchCategories(),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            verticalSpace(10),
+            MySearchBar(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              child: Image.asset('assets/Frame 1000004533.png'),
+            ),
+            verticalSpace(10),
+            BlocBuilder<HomeScreenCubit, HomeScreenState>(
+              buildWhen: (prev, current) =>
+                  current.event == HomeStateEvent.fetchingCategories,
+              builder: (context, state) {
+                return state.categoriesState.when(
+                  loading: () => const Center(
+                    child: CircularProgressIndicator.adaptive(),
                   ),
+                  error: (errorMsg) => Center(
+                    child: Text(errorMsg),
+                  ),
+                  loaded: (data) => CategriesTabList(
+                    categoriesNames: (data)
+                        .map((category) => category.name as String)
+                        .toList(),
+                    onCategoryChanged: (index) {
+                      final category = data[index].name;
+                      context
+                          .read<HomeScreenCubit>()
+                          .fetchProducts(category as String);
+                    },
+                  ),
+                  initial: () => const SizedBox.shrink(),
                 );
               },
             ),
-          ),
-        ),
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisExtent: 265,
-                crossAxisSpacing: 30.w,
-                mainAxisSpacing: 10,
+            Expanded(
+              child: BlocBuilder<HomeScreenCubit, HomeScreenState>(
+                buildWhen: (prev, current) =>
+                    current.event == HomeStateEvent.fetchingProducts,
+                builder: (context, state) {
+                  return state.productsState.when(
+                    loading: () => const Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    ),
+                    error: (errorMsg) => Center(
+                      child: Text(errorMsg),
+                    ),
+                    initial: () => const Center(
+                      child: CircularProgressIndicator.adaptive(),
+                    ),
+                    loaded: (data) => GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 5,
+                        mainAxisExtent: 255,
+                      ),
+                      itemCount: data.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        final product =
+                            data[index] as CategoryProductResponseModel;
+                        return MyProductsListItem(
+                          id: product.id,
+                          title: product.title,
+                          imageUrl: product.image,
+                          rating: product.rating.rate,
+                          price: product.price,
+                        );
+                      },
+                    ),
+                  );
+                },
               ),
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return const MyProductsListItem();
-              },
             ),
-          ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }
