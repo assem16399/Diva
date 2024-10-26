@@ -2,6 +2,7 @@ import 'package:diva/core/di/dependency_injection.dart';
 import 'package:diva/core/routing/routes.dart';
 import 'package:diva/core/widgets/my_bottom_nav_bar.dart';
 import 'package:diva/features/cart/ui/cart_tab.dart';
+import 'package:diva/features/login/logic/login_cubit.dart';
 import 'package:diva/features/login/ui/login_screen.dart';
 import 'package:diva/features/manage_product/logic/manage_product_cubit.dart';
 import 'package:diva/features/manage_product/ui/manage_product_screen.dart';
@@ -22,7 +23,10 @@ class AppRouter {
     switch (settings.name) {
       case Routes.loginScreen:
         return MaterialPageRoute(
-          builder: (_) => LoginScreen(),
+          builder: (_) => BlocProvider(
+            create: (context) => getIt<LoginCubit>(),
+            child: LoginScreen(),
+          ),
         );
       case Routes.signupScreen:
         return MaterialPageRoute(

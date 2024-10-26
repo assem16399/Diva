@@ -33,7 +33,6 @@ class ManageProductRepo {
       final response = await _apiService.addProduct(body: productModel);
       return ApiResult.success(response);
     } catch (e) {
-      rethrow;
       return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }

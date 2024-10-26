@@ -40,7 +40,7 @@ class _LoginApiService implements LoginApiService {
     )
         .compose(
           _dio.options,
-          'AIzaSyChRe4Npm-ICZaZFGmeYGWoLWNAoPqfruU',
+          '/accounts:signInWithPassword',
           queryParameters: queryParameters,
           data: _data,
         )

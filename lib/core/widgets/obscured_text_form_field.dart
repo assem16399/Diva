@@ -20,6 +20,7 @@ class ObscuredTextFormField extends StatefulWidget {
     this.onChanged,
     this.textInputType,
     this.autocorrect = false,
+    this.suffixIcon,
     this.borderRadius,
     this.maxLines,
   });
@@ -41,6 +42,7 @@ class ObscuredTextFormField extends StatefulWidget {
   final bool autocorrect;
   final BorderRadius? borderRadius;
   final int? maxLines;
+  final GestureDetector? suffixIcon;
   @override
   State<ObscuredTextFormField> createState() => _ObscuredTextFormFieldState();
 }
