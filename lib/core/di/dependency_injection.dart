@@ -17,6 +17,9 @@ import 'package:diva/features/product_details/logic/product_details_cubit.dart';
 import 'package:diva/features/signup/data/apis/signup_api_service.dart';
 import 'package:diva/features/signup/data/repos/signup_repos.dart';
 import 'package:diva/features/signup/logic/signup_cubit.dart';
+import 'package:diva/features/wishlist_screen/logic/wishlist_cubit.dart';
+import 'package:diva/features/wishlist_screen/repo/product_wishList_repository.dart';
+import 'package:event_bus/event_bus.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -24,8 +27,11 @@ final getIt = GetIt.instance;
 void setupGetIt() {
   // Dio
   final dio = DioFactory.getDio();
+  //Register Event Bus
   getIt
+    ..registerLazySingleton<EventBus>(EventBus.new)
     ..registerLazySingleton<LoginApiService>(() => LoginApiService(dio))
+
     // login
     ..registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()))
     ..registerFactory<LoginCubit>(() => LoginCubit(getIt()))
@@ -34,8 +40,8 @@ void setupGetIt() {
     ..registerLazySingleton<SignupApiService>(() => SignupApiService(dio))
     ..registerLazySingleton<SignupRepo>(() => SignupRepo(getIt()))
     ..registerFactory<SignupCubit>(() => SignupCubit(getIt()))
-    // ProductDetails
 
+    // ProductDetails
     ..registerLazySingleton<ProductDetailsApiService>(
       () => ProductDetailsApiService(dio),
     )
@@ -48,7 +54,7 @@ void setupGetIt() {
     ..registerLazySingleton<CategriesApiService>(() => CategriesApiService(dio))
     ..registerLazySingleton<CategoryRepository>(
         () => CategoryRepository(getIt()))
-    ..registerFactory<CategoriesCubit>(() => CategoriesCubit(getIt()))
+    ..registerFactory<CategoriesCubit>(() => CategoriesCubit(getIt(), getIt()))
 
     // Cart
     ..registerLazySingleton<CartApiService>(() => CartApiService(dio))
@@ -58,5 +64,13 @@ void setupGetIt() {
     //HomeScreen
     ..registerLazySingleton<HomeApiService>(() => HomeApiService(dio))
     ..registerLazySingleton<HomeRepository>(() => HomeRepository(getIt()))
-    ..registerFactory<HomeScreenCubit>(() => HomeScreenCubit(getIt()));
+    ..registerFactory<HomeScreenCubit>(() => HomeScreenCubit(getIt(), getIt()))
+    //Wishlist
+
+    ..registerLazySingleton<ProductWishListRepository>(
+      ProductWishListRepository.new,
+    )
+    ..registerFactory<WishlistCubit>(
+      () => WishlistCubit(getIt<ProductWishListRepository>()),
+    );
 }

@@ -28,6 +28,15 @@ extension StringExtension on String? {
 
 extension ListExtension<T> on List<T>? {
   bool isNullOrEmpty() => this == null || this!.isEmpty;
+
+  bool containsWhere(bool Function(T) test) {
+    for (final T e in this ?? []) {
+      if (test(e)) {
+        return true;
+      }
+    }
+    return false;
+  }
 }
 
 extension MapExtension<K, V> on Map<K, V>? {

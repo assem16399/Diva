@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:diva/features/home_Screen/data/apis/home_api_constants.dart';
-import 'package:diva/features/home_Screen/data/models/categories_response_model.dart';
-import 'package:diva/features/home_Screen/data/models/category_product_response_model.dart';
+import 'package:diva/features/home_Screen/data/models/home_product_response_model.dart';
+import 'package:diva/features/home_Screen/data/models/home_response_model.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'home_api_service.g.dart';
@@ -13,10 +13,10 @@ abstract class HomeApiService {
   Future<CategoriesResponseModel> fetchCategories();
 
   @GET('${HomeApiConstants.specificCategoryEndpoint}/{categoryName}')
-  Future<List<CategoryProductResponseModel>> fetchProductsOf({
+  Future<List<HomeProductResponseModel>> fetchProductsOf({
     @Path('categoryName') required String category,
   });
 
   @GET(HomeApiConstants.allProductsEndpoint)
-  Future<List<CategoryProductResponseModel>> fetchAllProducts();
+  Future<List<HomeProductResponseModel>> fetchAllProducts();
 }

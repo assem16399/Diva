@@ -1,14 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'category_product_response_model.dart';
+part of 'home_product_response_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-CategoryProductResponseModel _$CategoryProductResponseModelFromJson(
+HomeProductResponseModel _$HomeProductResponseModelFromJson(
         Map<String, dynamic> json) =>
-    CategoryProductResponseModel(
+    HomeProductResponseModel(
       id: (json['id'] as num).toInt(),
       title: json['title'] as String,
       price: (json['price'] as num).toDouble(),
@@ -18,8 +18,8 @@ CategoryProductResponseModel _$CategoryProductResponseModelFromJson(
       rating: Rating.fromJson(json['rating'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$CategoryProductResponseModelToJson(
-        CategoryProductResponseModel instance) =>
+Map<String, dynamic> _$HomeProductResponseModelToJson(
+        HomeProductResponseModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
