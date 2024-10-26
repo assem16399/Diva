@@ -23,4 +23,9 @@ abstract class ManageProductApiService {
     @Body() required ManageProductModel body,
     @Path('id') required String productId,
   });
+
+  @GET('${ManageProductApiConstants.manageProductEp}/{id}')
+  Future<ManageProductModel> getProductDetails({
+    @Path('id') required String productId,
+  });
 }

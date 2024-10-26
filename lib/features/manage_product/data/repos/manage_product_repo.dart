@@ -8,6 +8,16 @@ class ManageProductRepo {
 
   final ManageProductApiService _apiService;
 
+  Future<ApiResult<ManageProductModel>> getProductData(String productId) async {
+    try {
+      final response =
+          await _apiService.getProductDetails(productId: productId);
+      return ApiResult.success(response);
+    } catch (e) {
+      return ApiResult.failure(ApiErrorHandler.handle(e));
+    }
+  }
+
   Future<ApiResult<List<String>>> getAvailableCategories() async {
     try {
       final categories = await _apiService.getAvailableCategories();
@@ -23,6 +33,7 @@ class ManageProductRepo {
       final response = await _apiService.addProduct(body: productModel);
       return ApiResult.success(response);
     } catch (e) {
+      rethrow;
       return ApiResult.failure(ApiErrorHandler.handle(e));
     }
   }
