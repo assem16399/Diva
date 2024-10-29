@@ -57,13 +57,13 @@ class _HomeApiService implements HomeApiService {
   }
 
   @override
-  Future<List<CategoryProductResponseModel>> fetchProductsOf(
+  Future<List<HomeProductResponseModel>> fetchProductsOf(
       {required String category}) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<CategoryProductResponseModel>>(Options(
+    final _options = _setStreamType<List<HomeProductResponseModel>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -80,11 +80,11 @@ class _HomeApiService implements HomeApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<CategoryProductResponseModel> _value;
+    late List<HomeProductResponseModel> _value;
     try {
       _value = _result.data!
           .map((dynamic i) =>
-              CategoryProductResponseModel.fromJson(i as Map<String, dynamic>))
+              HomeProductResponseModel.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
@@ -94,12 +94,12 @@ class _HomeApiService implements HomeApiService {
   }
 
   @override
-  Future<List<CategoryProductResponseModel>> fetchAllProducts() async {
+  Future<List<HomeProductResponseModel>> fetchAllProducts() async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<List<CategoryProductResponseModel>>(Options(
+    final _options = _setStreamType<List<HomeProductResponseModel>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -116,11 +116,11 @@ class _HomeApiService implements HomeApiService {
           baseUrl,
         )));
     final _result = await _dio.fetch<List<dynamic>>(_options);
-    late List<CategoryProductResponseModel> _value;
+    late List<HomeProductResponseModel> _value;
     try {
       _value = _result.data!
           .map((dynamic i) =>
-              CategoryProductResponseModel.fromJson(i as Map<String, dynamic>))
+              HomeProductResponseModel.fromJson(i as Map<String, dynamic>))
           .toList();
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
