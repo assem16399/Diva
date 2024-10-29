@@ -11,7 +11,7 @@ class HomeCustomAppBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -30,7 +30,7 @@ class HomeCustomAppBar extends StatelessWidget {
                           ),
                         ),
                         const Text(
-                          'Welcome, Dalida',
+                          'Welcome, Asma',
                           style: TextStyle(fontSize: 17),
                         ),
                       ],
@@ -44,14 +44,17 @@ class HomeCustomAppBar extends StatelessWidget {
                     Row(
                       children: [
                         SizedBox(
-                            width: 40,
-                            height: 30,
-                            child: Image.asset(
-                                'assets/icons8-notification-128.png')),
+                          width: 40,
+                          height: 30,
+                          child: Image.asset(
+                            'assets/icons8-notification-128.png',
+                          ),
+                        ),
                         SizedBox(
-                            width: 40,
-                            height: 30,
-                            child: Image.asset('assets/search.png'))
+                          width: 40,
+                          height: 30,
+                          child: Image.asset('assets/search.png'),
+                        ),
                       ],
                     ),
                   ],

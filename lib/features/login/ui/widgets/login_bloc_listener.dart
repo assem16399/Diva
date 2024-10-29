@@ -1,6 +1,6 @@
 import 'package:diva/core/helpers/extensions.dart';
 import 'package:diva/core/routing/routes.dart';
-import 'package:diva/core/themes/styles.dart';
+import 'package:diva/core/themes/text_styles.dart';
 import 'package:diva/features/login/logic/login_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

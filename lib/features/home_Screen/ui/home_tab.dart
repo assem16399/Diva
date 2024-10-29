@@ -23,8 +23,8 @@ class HomeTab extends StatelessWidget {
       child: Column(
         children: [
           verticalSpace(10),
-          MySearchBar(),
-          Spanner(),
+          const MySearchBar(),
+          const Spanner(),
           verticalSpace(10),
           BlocBuilder<HomeScreenCubit, HomeScreenState>(
             buildWhen: (prev, current) =>
@@ -56,11 +56,11 @@ class HomeTab extends StatelessWidget {
                   current.event == HomeStateEvent.fetchingProducts,
               builder: (context, state) {
                 return state.productsState.when(
-                  loading: () => ProductsGridShimmer(),
+                  loading: () => const ProductsGridShimmer(),
                   error: (errorMsg) => Center(
                     child: Text(errorMsg),
                   ),
-                  initial: () => ProductsGridShimmer(),
+                  initial: () => const ProductsGridShimmer(),
                   loaded: (data) => Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 18),
                     child: GridView.builder(
