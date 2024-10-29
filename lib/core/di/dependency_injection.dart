@@ -11,6 +11,9 @@ import 'package:diva/features/home_Screen/logic/home_screen_cubit.dart';
 import 'package:diva/features/login/data/apis/login_api_service.dart';
 import 'package:diva/features/login/data/repo/login_repo.dart';
 import 'package:diva/features/login/logic/login_cubit.dart';
+import 'package:diva/features/manage_product/data/apis/manage_product_api_service.dart';
+import 'package:diva/features/manage_product/data/repos/manage_product_repo.dart';
+import 'package:diva/features/manage_product/logic/manage_product_cubit.dart';
 import 'package:diva/features/product_details/data/apis/product_details_api_service.dart';
 import 'package:diva/features/product_details/data/repos/product_details_repo.dart';
 import 'package:diva/features/product_details/logic/product_details_cubit.dart';
@@ -27,12 +30,13 @@ final getIt = GetIt.instance;
 void setupGetIt() {
   // Dio
   final dio = DioFactory.getDio();
+
   //Register Event Bus
   getIt
     ..registerLazySingleton<EventBus>(EventBus.new)
-    ..registerLazySingleton<LoginApiService>(() => LoginApiService(dio))
 
     // login
+    ..registerLazySingleton<LoginApiService>(() => LoginApiService(dio))
     ..registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()))
     ..registerFactory<LoginCubit>(() => LoginCubit(getIt()))
 
@@ -40,6 +44,12 @@ void setupGetIt() {
     ..registerLazySingleton<SignupApiService>(() => SignupApiService(dio))
     ..registerLazySingleton<SignupRepo>(() => SignupRepo(getIt()))
     ..registerFactory<SignupCubit>(() => SignupCubit(getIt()))
+
+    // ProductWishlist
+    ..registerLazySingleton<ProductWishListRepository>(
+      () => ProductWishListRepository(),
+    )
+    ..registerFactory<WishlistCubit>(() => WishlistCubit(getIt()))
 
     // ProductDetails
     ..registerLazySingleton<ProductDetailsApiService>(
@@ -65,12 +75,11 @@ void setupGetIt() {
     ..registerLazySingleton<HomeApiService>(() => HomeApiService(dio))
     ..registerLazySingleton<HomeRepository>(() => HomeRepository(getIt()))
     ..registerFactory<HomeScreenCubit>(() => HomeScreenCubit(getIt(), getIt()))
-    //Wishlist
 
-    ..registerLazySingleton<ProductWishListRepository>(
-      ProductWishListRepository.new,
+    // ManageProduct
+    ..registerLazySingleton<ManageProductApiService>(
+      () => ManageProductApiService(dio),
     )
-    ..registerFactory<WishlistCubit>(
-      () => WishlistCubit(getIt<ProductWishListRepository>()),
-    );
+    ..registerLazySingleton<ManageProductRepo>(() => ManageProductRepo(getIt()))
+    ..registerFactory<ManageProductCubit>(() => ManageProductCubit(getIt()));
 }
