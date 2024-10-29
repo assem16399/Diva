@@ -11,7 +11,7 @@ class ProfileScreen extends StatelessWidget {
         child: Column(
           children: [
             const Padding(
-              padding: EdgeInsets.all(15.0),
+              padding: EdgeInsets.all(15),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -23,15 +23,16 @@ class ProfileScreen extends StatelessWidget {
                   Text(
                     'Profile',
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w600),
+                      color: Colors.black,
+                      fontSize: 28,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                   Icon(
                     Icons.shopping_cart_checkout,
                     color: Colors.black,
                     size: 25,
-                  )
+                  ),
                 ],
               ),
             ),
@@ -51,27 +52,26 @@ class ProfileScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(left: 20),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     'Account',
                     style: TextStyle(
-                        color: Color.fromRGBO(255, 23, 104, 1),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 25),
-                  )
+                      color: Color.fromRGBO(255, 23, 104, 1),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                    ),
+                  ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Container(
                 height: 40,
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    width: 1,
                     color: Colors.grey.shade200,
                   ),
                 ),
@@ -85,7 +85,7 @@ class ProfileScreen extends StatelessWidget {
                           width: 10,
                         ),
                         Text(
-                          'Personal informations',
+                          'Personal information',
                           style: TextStyle(color: Colors.black, fontSize: 15),
                         ),
                       ],
@@ -93,20 +93,19 @@ class ProfileScreen extends StatelessWidget {
                     Icon(
                       Icons.arrow_forward_ios_sharp,
                       color: Colors.black,
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Container(
                 height: 40,
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    width: 1,
                     color: Colors.grey.shade200,
                   ),
                 ),
@@ -128,20 +127,19 @@ class ProfileScreen extends StatelessWidget {
                     Icon(
                       Icons.arrow_forward_ios_sharp,
                       color: Colors.black,
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Container(
                 height: 40,
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    width: 1,
                     color: Colors.grey.shade200,
                   ),
                 ),
@@ -155,7 +153,7 @@ class ProfileScreen extends StatelessWidget {
                           width: 10,
                         ),
                         Text(
-                          'Adress',
+                          'Address',
                           style: TextStyle(color: Colors.black, fontSize: 15),
                         ),
                       ],
@@ -163,20 +161,19 @@ class ProfileScreen extends StatelessWidget {
                     Icon(
                       Icons.arrow_forward_ios_sharp,
                       color: Colors.black,
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Container(
                 height: 40,
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    width: 1,
                     color: Colors.grey.shade200,
                   ),
                 ),
@@ -198,20 +195,19 @@ class ProfileScreen extends StatelessWidget {
                     Icon(
                       Icons.arrow_forward_ios_sharp,
                       color: Colors.black,
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Container(
                 height: 40,
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    width: 1,
                     color: Colors.grey.shade200,
                   ),
                 ),
@@ -233,7 +229,7 @@ class ProfileScreen extends StatelessWidget {
                     Icon(
                       Icons.arrow_forward_ios_sharp,
                       color: Colors.black,
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -241,27 +237,26 @@ class ProfileScreen extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.only(left: 20),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     'Privacy',
                     style: TextStyle(
-                        color: Color.fromRGBO(255, 23, 104, 1),
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),
-                  )
+                      color: Color.fromRGBO(255, 23, 104, 1),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                    ),
+                  ),
                 ],
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Container(
                 height: 40,
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    width: 1,
                     color: Colors.grey.shade200,
                   ),
                 ),
@@ -283,20 +278,19 @@ class ProfileScreen extends StatelessWidget {
                     Icon(
                       Icons.arrow_forward_ios_sharp,
                       color: Colors.black,
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Container(
                 height: 40,
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    width: 1,
                     color: Colors.grey.shade200,
                   ),
                 ),
@@ -318,20 +312,19 @@ class ProfileScreen extends StatelessWidget {
                     Icon(
                       Icons.arrow_forward_ios_sharp,
                       color: Colors.black,
-                    )
+                    ),
                   ],
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8),
               child: Container(
                 height: 40,
                 padding: const EdgeInsets.only(left: 10, right: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   border: Border.all(
-                    width: 1,
                     color: Colors.grey.shade200,
                   ),
                 ),
@@ -353,7 +346,7 @@ class ProfileScreen extends StatelessWidget {
                     Icon(
                       Icons.arrow_forward_ios_sharp,
                       color: Colors.black,
-                    )
+                    ),
                   ],
                 ),
               ),

@@ -1,6 +1,6 @@
 import 'package:diva/core/helpers/spacing.dart';
+import 'package:diva/core/themes/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyProductsListItem extends StatelessWidget {
   const MyProductsListItem({
@@ -9,6 +9,9 @@ class MyProductsListItem extends StatelessWidget {
     required this.imageUrl,
     required this.rating,
     required this.price,
+    // TODO (Asma): - make it required
+    this.isFav = false,
+    this.onFavoriteToggled,
     super.key,
   });
 
@@ -17,7 +20,8 @@ class MyProductsListItem extends StatelessWidget {
   final String imageUrl;
   final double rating;
   final double price;
-
+  final VoidCallback? onFavoriteToggled;
+  final bool isFav;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -34,7 +38,7 @@ class MyProductsListItem extends StatelessWidget {
             ),
           ),
           height: 200,
-          width: 150.w,
+          width: double.infinity,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -42,40 +46,48 @@ class MyProductsListItem extends StatelessWidget {
                 padding: const EdgeInsets.all(5),
                 child: Row(
                   children: [
-                    Container(
-                      height: 25,
-                      width: 25,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white,
-                      ),
-                      padding: const EdgeInsets.all(5),
-                      child: Image.asset(
-                        'assets/icons8-like-50.png',
-                        fit: BoxFit.cover,
-                      ),
+                    GestureDetector(
+                      onTap: onFavoriteToggled,
+                      child: Container(
+                          height: 25,
+                          width: 25,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                          ),
+                          padding: const EdgeInsets.all(5),
+                          child: Center(
+                            child: Icon(
+                              isFav ? Icons.favorite : Icons.favorite_border,
+                              color: isFav
+                                  ? ColorsManager.mainDeepPink
+                                  : Colors.black,
+                              size: 15,
+                            ),
+                          )),
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(6),
+                padding: const EdgeInsets.all(10),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Container(
-                      padding: const EdgeInsets.all(5),
-                      height: 25,
-                      width: 25,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.white,
-                      ),
-                      child: Image.asset(
-                        'assets/add-to-cart.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                        padding: const EdgeInsets.all(2),
+                        height: 25,
+                        width: 25,
+                        decoration: const BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.white,
+                        ),
+                        child: const Center(
+                          child: Icon(
+                            Icons.shopping_cart,
+                            size: 15,
+                          ),
+                        )),
                   ],
                 ),
               ),
@@ -84,7 +96,7 @@ class MyProductsListItem extends StatelessWidget {
         ),
         verticalSpace(5),
         SizedBox(
-          width: 150.w,
+          width: double.infinity,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -109,7 +121,7 @@ class MyProductsListItem extends StatelessWidget {
         ),
         verticalSpace(5),
         SizedBox(
-          width: 150.w,
+          width: double.infinity,
           child: Text(
             '${price.toStringAsFixed(2)} L.E',
             maxLines: 1,
