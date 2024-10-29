@@ -102,17 +102,14 @@ class CategoriesCubit extends Cubit<CategoriesState> with EventBusMixin {
           _wishlistRepo.addToWishlist(product);
         }
 
-        emit(state.copyWith(
-            wishlistDataState:
-                CategoriesDataState<List<CategoryProductResponseModel>>.loaded(
-              data: wishlistAfterToggling,
-            ),
-            event: CategoriesStateEvent.toggleWishlistItem));
-
         emit(
           state.copyWith(
               wishlistToggleState: WishlistToggleState.loaded(
                   wishlist: wishlistAfterToggling, productId: product.id),
+              wishlistDataState: CategoriesDataState<
+                  List<CategoryProductResponseModel>>.loaded(
+                data: wishlistAfterToggling,
+              ),
               event: CategoriesStateEvent.toggleWishlistItem),
         );
 

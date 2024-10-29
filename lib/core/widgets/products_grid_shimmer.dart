@@ -24,6 +24,7 @@ class ProductsGridShimmer extends StatelessWidget {
             itemCount: 10,
             itemBuilder: (BuildContext context, int index) {
               return const MyProductsListItem(
+                isFav: false,
                 id: 0,
                 title: '',
                 imageUrl: '',

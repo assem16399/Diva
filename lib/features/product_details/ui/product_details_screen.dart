@@ -61,8 +61,10 @@ class ProductDetailsScreen extends StatelessWidget {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              ProductTitle(
-                                                title: product.title ?? '',
+                                              Expanded(
+                                                child: ProductTitle(
+                                                  title: product.title ?? '',
+                                                ),
                                               ),
                                               ProductReviewsSummary(
                                                 review:
@@ -112,7 +114,9 @@ class ProductDetailsScreen extends StatelessWidget {
                                 children: [
                                   HeaderIcon(
                                     iconPath: SVGIcons.back,
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
                                   ),
                                   HeaderIcon(
                                     iconPath: SVGIcons.share,
