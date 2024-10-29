@@ -21,9 +21,6 @@
   - Unit tests(Soon).
  
 # Diagrams
- - High-Level Diagram
-   ![High-Level Diagram]()
-
 
     
 - Low-Level Diagram - Simplified clean architecture
