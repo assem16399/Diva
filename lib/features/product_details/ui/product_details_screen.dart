@@ -102,6 +102,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                     ],
                                   ),
                                 ),
+                                verticalSpace(24.h),
                               ],
                             ),
                           ),
@@ -131,10 +132,12 @@ class ProductDetailsScreen extends StatelessWidget {
                     ),
                     Padding(
                       padding: EdgeInsets.only(bottom: 16.h),
-                      child: const SizedBox(
+                      child: SizedBox(
                         height: 48,
                         width: double.infinity,
-                        child: ProductDetailsBottomActions(),
+                        child: ProductDetailsBottomActions(
+                          productTitle: product.title ?? '',
+                        ),
                       ),
                     ),
                   ],

@@ -2,6 +2,7 @@ import 'package:diva/core/helpers/extensions.dart';
 import 'package:diva/core/helpers/spacing.dart';
 import 'package:diva/core/routing/routes.dart';
 import 'package:diva/core/themes/colors.dart';
+import 'package:diva/core/widgets/success_dialog.dart';
 import 'package:flutter/material.dart';
 
 class MyProductsListItem extends StatelessWidget {
@@ -57,22 +58,23 @@ class MyProductsListItem extends StatelessWidget {
                       GestureDetector(
                         onTap: onFavoriteToggled,
                         child: Container(
-                            height: 25,
-                            width: 25,
-                            decoration: const BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.white,
+                          height: 25,
+                          width: 25,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                          ),
+                          padding: const EdgeInsets.all(5),
+                          child: Center(
+                            child: Icon(
+                              isFav ? Icons.favorite : Icons.favorite_border,
+                              color: isFav
+                                  ? ColorsManager.mainDeepPink
+                                  : Colors.black,
+                              size: 15,
                             ),
-                            padding: const EdgeInsets.all(5),
-                            child: Center(
-                              child: Icon(
-                                isFav ? Icons.favorite : Icons.favorite_border,
-                                color: isFav
-                                    ? ColorsManager.mainDeepPink
-                                    : Colors.black,
-                                size: 15,
-                              ),
-                            )),
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -82,7 +84,20 @@ class MyProductsListItem extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Container(
+                      GestureDetector(
+                        onTap: () {
+                          showAdaptiveDialog<dynamic>(
+                            context: context,
+                            builder: (context) => SuccessDialog(
+                              title: 'Great Choice',
+                              content: '$title added to cart successfully',
+                              onActionPressed: () {
+                                context.pop();
+                              },
+                            ),
+                          );
+                        },
+                        child: Container(
                           padding: const EdgeInsets.all(2),
                           height: 25,
                           width: 25,
@@ -95,7 +110,9 @@ class MyProductsListItem extends StatelessWidget {
                               Icons.shopping_cart,
                               size: 15,
                             ),
-                          )),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
