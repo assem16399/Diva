@@ -30,7 +30,7 @@ class MyTextButtom extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+        shape: WidgetStatePropertyAll<RoundedRectangleBorder>(
           RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius ?? 25.0),
           ),
@@ -38,13 +38,13 @@ class MyTextButtom extends StatelessWidget {
         backgroundColor: MaterialStatePropertyAll(
           backgroundColor ?? ColorsManager.mainDeepPink,
         ),
-        padding: MaterialStateProperty.all<EdgeInsets>(
+        padding: WidgetStatePropertyAll<EdgeInsets>(
           EdgeInsets.symmetric(
             horizontal: horizontalPadding?.w ?? 12.w,
             vertical: verticalPadding?.h ?? 14.h,
           ),
         ),
-        fixedSize: MaterialStateProperty.all(
+        fixedSize: WidgetStatePropertyAll(
           Size(buttonWidth?.w ?? 310, buttonHeight ?? 55.h),
         ),
       ),

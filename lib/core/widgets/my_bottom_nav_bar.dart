@@ -15,6 +15,8 @@ class MyBottomNavBar extends StatefulWidget {
 
 class _MyBottomNavBarState extends State<MyBottomNavBar> {
   int _selectedIndex = 0;
+
+  @override
   static final List<Widget> _widgetOptions = <Widget>[
     const HomeTab(),
     const Catecroies(),

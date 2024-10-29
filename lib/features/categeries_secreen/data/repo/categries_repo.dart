@@ -36,7 +36,6 @@ class CategoryRepository {
         ),
       );
     } catch (error) {
-      rethrow;
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }

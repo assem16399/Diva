@@ -1,8 +1,8 @@
 import 'package:diva/core/networking/api_error_handler.dart';
 import 'package:diva/core/networking/api_result.dart';
 import 'package:diva/features/home_Screen/data/apis/home_api_service.dart';
-import 'package:diva/features/home_Screen/data/models/categories_response_model.dart';
-import 'package:diva/features/home_Screen/data/models/category_product_response_model.dart';
+import 'package:diva/features/home_Screen/data/models/home_product_response_model.dart';
+import 'package:diva/features/home_Screen/data/models/home_response_model.dart';
 
 class HomeRepository {
   HomeRepository(this._HomeApiService);
@@ -18,7 +18,7 @@ class HomeRepository {
     }
   }
 
-  Future<ApiResult<List<CategoryProductResponseModel>>>
+  Future<ApiResult<List<HomeProductResponseModel>>>
       getSpecificCategoriesProducts(String categoryName) async {
     try {
       final categoryProductsResponseModel =
@@ -31,7 +31,7 @@ class HomeRepository {
     }
   }
 
-  Future<ApiResult<List<CategoryProductResponseModel>>>
+  Future<ApiResult<List<HomeProductResponseModel>>>
       getAllCategoriesProducts() async {
     try {
       final categoriesProductsResponseModel =

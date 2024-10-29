@@ -14,4 +14,5 @@ class ColorsManager {
   static const Color lightPinkishColor = Color(0xFFFEEBF7);
   static const Color vibrantPinkishRedColor = Color(0xFFFF1768);
   static const Color veryLightGrayColor = Color(0xFCECECEC);
+  static const Color shadedBlue = Color(0x174285F4);
 }

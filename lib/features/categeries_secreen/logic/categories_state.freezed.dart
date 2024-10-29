@@ -21,6 +21,10 @@ mixin _$CategoriesState<T> {
       throw _privateConstructorUsedError;
   CategoriesDataState<dynamic> get productsState =>
       throw _privateConstructorUsedError;
+  WishlistToggleState<dynamic> get wishlistToggleState =>
+      throw _privateConstructorUsedError;
+  CategoriesDataState<dynamic> get wishlistDataState =>
+      throw _privateConstructorUsedError;
 
   /// Create a copy of CategoriesState
   /// with the given fields replaced by the non-null parameter values.
@@ -38,10 +42,14 @@ abstract class $CategoriesStateCopyWith<T, $Res> {
   $Res call(
       {CategoriesStateEvent event,
       CategoriesDataState<dynamic> categoriesState,
-      CategoriesDataState<dynamic> productsState});
+      CategoriesDataState<dynamic> productsState,
+      WishlistToggleState<dynamic> wishlistToggleState,
+      CategoriesDataState<dynamic> wishlistDataState});
 
   $CategoriesDataStateCopyWith<dynamic, $Res> get categoriesState;
   $CategoriesDataStateCopyWith<dynamic, $Res> get productsState;
+  $WishlistToggleStateCopyWith<dynamic, $Res> get wishlistToggleState;
+  $CategoriesDataStateCopyWith<dynamic, $Res> get wishlistDataState;
 }
 
 /// @nodoc
@@ -62,6 +70,8 @@ class _$CategoriesStateCopyWithImpl<T, $Res, $Val extends CategoriesState<T>>
     Object? event = null,
     Object? categoriesState = null,
     Object? productsState = null,
+    Object? wishlistToggleState = null,
+    Object? wishlistDataState = null,
   }) {
     return _then(_value.copyWith(
       event: null == event
@@ -75,6 +85,14 @@ class _$CategoriesStateCopyWithImpl<T, $Res, $Val extends CategoriesState<T>>
       productsState: null == productsState
           ? _value.productsState
           : productsState // ignore: cast_nullable_to_non_nullable
+              as CategoriesDataState<dynamic>,
+      wishlistToggleState: null == wishlistToggleState
+          ? _value.wishlistToggleState
+          : wishlistToggleState // ignore: cast_nullable_to_non_nullable
+              as WishlistToggleState<dynamic>,
+      wishlistDataState: null == wishlistDataState
+          ? _value.wishlistDataState
+          : wishlistDataState // ignore: cast_nullable_to_non_nullable
               as CategoriesDataState<dynamic>,
     ) as $Val);
   }
@@ -100,6 +118,28 @@ class _$CategoriesStateCopyWithImpl<T, $Res, $Val extends CategoriesState<T>>
       return _then(_value.copyWith(productsState: value) as $Val);
     });
   }
+
+  /// Create a copy of CategoriesState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $WishlistToggleStateCopyWith<dynamic, $Res> get wishlistToggleState {
+    return $WishlistToggleStateCopyWith<dynamic, $Res>(
+        _value.wishlistToggleState, (value) {
+      return _then(_value.copyWith(wishlistToggleState: value) as $Val);
+    });
+  }
+
+  /// Create a copy of CategoriesState
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $CategoriesDataStateCopyWith<dynamic, $Res> get wishlistDataState {
+    return $CategoriesDataStateCopyWith<dynamic, $Res>(_value.wishlistDataState,
+        (value) {
+      return _then(_value.copyWith(wishlistDataState: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
@@ -113,12 +153,18 @@ abstract class _$$CategoriesStateImplCopyWith<T, $Res>
   $Res call(
       {CategoriesStateEvent event,
       CategoriesDataState<dynamic> categoriesState,
-      CategoriesDataState<dynamic> productsState});
+      CategoriesDataState<dynamic> productsState,
+      WishlistToggleState<dynamic> wishlistToggleState,
+      CategoriesDataState<dynamic> wishlistDataState});
 
   @override
   $CategoriesDataStateCopyWith<dynamic, $Res> get categoriesState;
   @override
   $CategoriesDataStateCopyWith<dynamic, $Res> get productsState;
+  @override
+  $WishlistToggleStateCopyWith<dynamic, $Res> get wishlistToggleState;
+  @override
+  $CategoriesDataStateCopyWith<dynamic, $Res> get wishlistDataState;
 }
 
 /// @nodoc
@@ -137,6 +183,8 @@ class __$$CategoriesStateImplCopyWithImpl<T, $Res>
     Object? event = null,
     Object? categoriesState = null,
     Object? productsState = null,
+    Object? wishlistToggleState = null,
+    Object? wishlistDataState = null,
   }) {
     return _then(_$CategoriesStateImpl<T>(
       event: null == event
@@ -151,6 +199,14 @@ class __$$CategoriesStateImplCopyWithImpl<T, $Res>
           ? _value.productsState
           : productsState // ignore: cast_nullable_to_non_nullable
               as CategoriesDataState<dynamic>,
+      wishlistToggleState: null == wishlistToggleState
+          ? _value.wishlistToggleState
+          : wishlistToggleState // ignore: cast_nullable_to_non_nullable
+              as WishlistToggleState<dynamic>,
+      wishlistDataState: null == wishlistDataState
+          ? _value.wishlistDataState
+          : wishlistDataState // ignore: cast_nullable_to_non_nullable
+              as CategoriesDataState<dynamic>,
     ));
   }
 }
@@ -161,7 +217,9 @@ class _$CategoriesStateImpl<T> implements _CategoriesState<T> {
   const _$CategoriesStateImpl(
       {required this.event,
       this.categoriesState = const CategoriesDataState.initial(),
-      this.productsState = const CategoriesDataState.initial()});
+      this.productsState = const CategoriesDataState.initial(),
+      this.wishlistToggleState = const WishlistToggleState.initial(),
+      this.wishlistDataState = const CategoriesDataState.initial()});
 
   @override
   final CategoriesStateEvent event;
@@ -171,10 +229,16 @@ class _$CategoriesStateImpl<T> implements _CategoriesState<T> {
   @override
   @JsonKey()
   final CategoriesDataState<dynamic> productsState;
+  @override
+  @JsonKey()
+  final WishlistToggleState<dynamic> wishlistToggleState;
+  @override
+  @JsonKey()
+  final CategoriesDataState<dynamic> wishlistDataState;
 
   @override
   String toString() {
-    return 'CategoriesState<$T>(event: $event, categoriesState: $categoriesState, productsState: $productsState)';
+    return 'CategoriesState<$T>(event: $event, categoriesState: $categoriesState, productsState: $productsState, wishlistToggleState: $wishlistToggleState, wishlistDataState: $wishlistDataState)';
   }
 
   @override
@@ -186,12 +250,16 @@ class _$CategoriesStateImpl<T> implements _CategoriesState<T> {
             (identical(other.categoriesState, categoriesState) ||
                 other.categoriesState == categoriesState) &&
             (identical(other.productsState, productsState) ||
-                other.productsState == productsState));
+                other.productsState == productsState) &&
+            (identical(other.wishlistToggleState, wishlistToggleState) ||
+                other.wishlistToggleState == wishlistToggleState) &&
+            (identical(other.wishlistDataState, wishlistDataState) ||
+                other.wishlistDataState == wishlistDataState));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, event, categoriesState, productsState);
+  int get hashCode => Object.hash(runtimeType, event, categoriesState,
+      productsState, wishlistToggleState, wishlistDataState);
 
   /// Create a copy of CategoriesState
   /// with the given fields replaced by the non-null parameter values.
@@ -207,7 +275,9 @@ abstract class _CategoriesState<T> implements CategoriesState<T> {
   const factory _CategoriesState(
           {required final CategoriesStateEvent event,
           final CategoriesDataState<dynamic> categoriesState,
-          final CategoriesDataState<dynamic> productsState}) =
+          final CategoriesDataState<dynamic> productsState,
+          final WishlistToggleState<dynamic> wishlistToggleState,
+          final CategoriesDataState<dynamic> wishlistDataState}) =
       _$CategoriesStateImpl<T>;
 
   @override
@@ -216,6 +286,10 @@ abstract class _CategoriesState<T> implements CategoriesState<T> {
   CategoriesDataState<dynamic> get categoriesState;
   @override
   CategoriesDataState<dynamic> get productsState;
+  @override
+  WishlistToggleState<dynamic> get wishlistToggleState;
+  @override
+  CategoriesDataState<dynamic> get wishlistDataState;
 
   /// Create a copy of CategoriesState
   /// with the given fields replaced by the non-null parameter values.
@@ -842,5 +916,531 @@ abstract class _Error<T> implements CategoriesDataState<T> {
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$ErrorImplCopyWith<T, _$ErrorImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$WishlistToggleState<T> {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+            List<CategoryProductResponseModel> wishlist, int productId)
+        loaded,
+    required TResult Function(String message) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+            List<CategoryProductResponseModel> wishlist, int productId)?
+        loaded,
+    TResult? Function(String message)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+            List<CategoryProductResponseModel> wishlist, int productId)?
+        loaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WishlistToggleInitial<T> value) initial,
+    required TResult Function(_ToggleLoaded<T> value) loaded,
+    required TResult Function(_ToggleError<T> value) error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_WishlistToggleInitial<T> value)? initial,
+    TResult? Function(_ToggleLoaded<T> value)? loaded,
+    TResult? Function(_ToggleError<T> value)? error,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WishlistToggleInitial<T> value)? initial,
+    TResult Function(_ToggleLoaded<T> value)? loaded,
+    TResult Function(_ToggleError<T> value)? error,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $WishlistToggleStateCopyWith<T, $Res> {
+  factory $WishlistToggleStateCopyWith(WishlistToggleState<T> value,
+          $Res Function(WishlistToggleState<T>) then) =
+      _$WishlistToggleStateCopyWithImpl<T, $Res, WishlistToggleState<T>>;
+}
+
+/// @nodoc
+class _$WishlistToggleStateCopyWithImpl<T, $Res,
+        $Val extends WishlistToggleState<T>>
+    implements $WishlistToggleStateCopyWith<T, $Res> {
+  _$WishlistToggleStateCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of WishlistToggleState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+abstract class _$$WishlistToggleInitialImplCopyWith<T, $Res> {
+  factory _$$WishlistToggleInitialImplCopyWith(
+          _$WishlistToggleInitialImpl<T> value,
+          $Res Function(_$WishlistToggleInitialImpl<T>) then) =
+      __$$WishlistToggleInitialImplCopyWithImpl<T, $Res>;
+}
+
+/// @nodoc
+class __$$WishlistToggleInitialImplCopyWithImpl<T, $Res>
+    extends _$WishlistToggleStateCopyWithImpl<T, $Res,
+        _$WishlistToggleInitialImpl<T>>
+    implements _$$WishlistToggleInitialImplCopyWith<T, $Res> {
+  __$$WishlistToggleInitialImplCopyWithImpl(
+      _$WishlistToggleInitialImpl<T> _value,
+      $Res Function(_$WishlistToggleInitialImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WishlistToggleState
+  /// with the given fields replaced by the non-null parameter values.
+}
+
+/// @nodoc
+
+class _$WishlistToggleInitialImpl<T> implements _WishlistToggleInitial<T> {
+  const _$WishlistToggleInitialImpl();
+
+  @override
+  String toString() {
+    return 'WishlistToggleState<$T>.initial()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$WishlistToggleInitialImpl<T>);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+            List<CategoryProductResponseModel> wishlist, int productId)
+        loaded,
+    required TResult Function(String message) error,
+  }) {
+    return initial();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+            List<CategoryProductResponseModel> wishlist, int productId)?
+        loaded,
+    TResult? Function(String message)? error,
+  }) {
+    return initial?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+            List<CategoryProductResponseModel> wishlist, int productId)?
+        loaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WishlistToggleInitial<T> value) initial,
+    required TResult Function(_ToggleLoaded<T> value) loaded,
+    required TResult Function(_ToggleError<T> value) error,
+  }) {
+    return initial(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_WishlistToggleInitial<T> value)? initial,
+    TResult? Function(_ToggleLoaded<T> value)? loaded,
+    TResult? Function(_ToggleError<T> value)? error,
+  }) {
+    return initial?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WishlistToggleInitial<T> value)? initial,
+    TResult Function(_ToggleLoaded<T> value)? loaded,
+    TResult Function(_ToggleError<T> value)? error,
+    required TResult orElse(),
+  }) {
+    if (initial != null) {
+      return initial(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WishlistToggleInitial<T> implements WishlistToggleState<T> {
+  const factory _WishlistToggleInitial() = _$WishlistToggleInitialImpl<T>;
+}
+
+/// @nodoc
+abstract class _$$ToggleLoadedImplCopyWith<T, $Res> {
+  factory _$$ToggleLoadedImplCopyWith(_$ToggleLoadedImpl<T> value,
+          $Res Function(_$ToggleLoadedImpl<T>) then) =
+      __$$ToggleLoadedImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({List<CategoryProductResponseModel> wishlist, int productId});
+}
+
+/// @nodoc
+class __$$ToggleLoadedImplCopyWithImpl<T, $Res>
+    extends _$WishlistToggleStateCopyWithImpl<T, $Res, _$ToggleLoadedImpl<T>>
+    implements _$$ToggleLoadedImplCopyWith<T, $Res> {
+  __$$ToggleLoadedImplCopyWithImpl(
+      _$ToggleLoadedImpl<T> _value, $Res Function(_$ToggleLoadedImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WishlistToggleState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? wishlist = null,
+    Object? productId = null,
+  }) {
+    return _then(_$ToggleLoadedImpl<T>(
+      wishlist: null == wishlist
+          ? _value._wishlist
+          : wishlist // ignore: cast_nullable_to_non_nullable
+              as List<CategoryProductResponseModel>,
+      productId: null == productId
+          ? _value.productId
+          : productId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ToggleLoadedImpl<T> implements _ToggleLoaded<T> {
+  const _$ToggleLoadedImpl(
+      {required final List<CategoryProductResponseModel> wishlist,
+      required this.productId})
+      : _wishlist = wishlist;
+
+  final List<CategoryProductResponseModel> _wishlist;
+  @override
+  List<CategoryProductResponseModel> get wishlist {
+    if (_wishlist is EqualUnmodifiableListView) return _wishlist;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_wishlist);
+  }
+
+  @override
+  final int productId;
+
+  @override
+  String toString() {
+    return 'WishlistToggleState<$T>.loaded(wishlist: $wishlist, productId: $productId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ToggleLoadedImpl<T> &&
+            const DeepCollectionEquality().equals(other._wishlist, _wishlist) &&
+            (identical(other.productId, productId) ||
+                other.productId == productId));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_wishlist), productId);
+
+  /// Create a copy of WishlistToggleState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ToggleLoadedImplCopyWith<T, _$ToggleLoadedImpl<T>> get copyWith =>
+      __$$ToggleLoadedImplCopyWithImpl<T, _$ToggleLoadedImpl<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+            List<CategoryProductResponseModel> wishlist, int productId)
+        loaded,
+    required TResult Function(String message) error,
+  }) {
+    return loaded(wishlist, productId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+            List<CategoryProductResponseModel> wishlist, int productId)?
+        loaded,
+    TResult? Function(String message)? error,
+  }) {
+    return loaded?.call(wishlist, productId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+            List<CategoryProductResponseModel> wishlist, int productId)?
+        loaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(wishlist, productId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WishlistToggleInitial<T> value) initial,
+    required TResult Function(_ToggleLoaded<T> value) loaded,
+    required TResult Function(_ToggleError<T> value) error,
+  }) {
+    return loaded(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_WishlistToggleInitial<T> value)? initial,
+    TResult? Function(_ToggleLoaded<T> value)? loaded,
+    TResult? Function(_ToggleError<T> value)? error,
+  }) {
+    return loaded?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WishlistToggleInitial<T> value)? initial,
+    TResult Function(_ToggleLoaded<T> value)? loaded,
+    TResult Function(_ToggleError<T> value)? error,
+    required TResult orElse(),
+  }) {
+    if (loaded != null) {
+      return loaded(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ToggleLoaded<T> implements WishlistToggleState<T> {
+  const factory _ToggleLoaded(
+      {required final List<CategoryProductResponseModel> wishlist,
+      required final int productId}) = _$ToggleLoadedImpl<T>;
+
+  List<CategoryProductResponseModel> get wishlist;
+  int get productId;
+
+  /// Create a copy of WishlistToggleState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ToggleLoadedImplCopyWith<T, _$ToggleLoadedImpl<T>> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$ToggleErrorImplCopyWith<T, $Res> {
+  factory _$$ToggleErrorImplCopyWith(_$ToggleErrorImpl<T> value,
+          $Res Function(_$ToggleErrorImpl<T>) then) =
+      __$$ToggleErrorImplCopyWithImpl<T, $Res>;
+  @useResult
+  $Res call({String message});
+}
+
+/// @nodoc
+class __$$ToggleErrorImplCopyWithImpl<T, $Res>
+    extends _$WishlistToggleStateCopyWithImpl<T, $Res, _$ToggleErrorImpl<T>>
+    implements _$$ToggleErrorImplCopyWith<T, $Res> {
+  __$$ToggleErrorImplCopyWithImpl(
+      _$ToggleErrorImpl<T> _value, $Res Function(_$ToggleErrorImpl<T>) _then)
+      : super(_value, _then);
+
+  /// Create a copy of WishlistToggleState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = null,
+  }) {
+    return _then(_$ToggleErrorImpl<T>(
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$ToggleErrorImpl<T> implements _ToggleError<T> {
+  const _$ToggleErrorImpl({required this.message});
+
+  @override
+  final String message;
+
+  @override
+  String toString() {
+    return 'WishlistToggleState<$T>.error(message: $message)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$ToggleErrorImpl<T> &&
+            (identical(other.message, message) || other.message == message));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, message);
+
+  /// Create a copy of WishlistToggleState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$ToggleErrorImplCopyWith<T, _$ToggleErrorImpl<T>> get copyWith =>
+      __$$ToggleErrorImplCopyWithImpl<T, _$ToggleErrorImpl<T>>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(
+            List<CategoryProductResponseModel> wishlist, int productId)
+        loaded,
+    required TResult Function(String message) error,
+  }) {
+    return error(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(
+            List<CategoryProductResponseModel> wishlist, int productId)?
+        loaded,
+    TResult? Function(String message)? error,
+  }) {
+    return error?.call(message);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(
+            List<CategoryProductResponseModel> wishlist, int productId)?
+        loaded,
+    TResult Function(String message)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(message);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_WishlistToggleInitial<T> value) initial,
+    required TResult Function(_ToggleLoaded<T> value) loaded,
+    required TResult Function(_ToggleError<T> value) error,
+  }) {
+    return error(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_WishlistToggleInitial<T> value)? initial,
+    TResult? Function(_ToggleLoaded<T> value)? loaded,
+    TResult? Function(_ToggleError<T> value)? error,
+  }) {
+    return error?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_WishlistToggleInitial<T> value)? initial,
+    TResult Function(_ToggleLoaded<T> value)? loaded,
+    TResult Function(_ToggleError<T> value)? error,
+    required TResult orElse(),
+  }) {
+    if (error != null) {
+      return error(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ToggleError<T> implements WishlistToggleState<T> {
+  const factory _ToggleError({required final String message}) =
+      _$ToggleErrorImpl<T>;
+
+  String get message;
+
+  /// Create a copy of WishlistToggleState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$ToggleErrorImplCopyWith<T, _$ToggleErrorImpl<T>> get copyWith =>
       throw _privateConstructorUsedError;
 }

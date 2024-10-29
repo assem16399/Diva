@@ -1,5 +1,5 @@
-class CategoryResponseModel {
-  CategoryResponseModel({required this.name});
+class HomeResponseModel {
+  HomeResponseModel({required this.name});
 
   final String name;
 }
@@ -9,13 +9,13 @@ class CategoriesResponseModel {
 
   factory CategoriesResponseModel.fromJson(List<dynamic> json) {
     return CategoriesResponseModel(
-      categories: List<CategoryResponseModel>.from(
+      categories: List<HomeResponseModel>.from(
         json.map(
-          (categoryName) => CategoryResponseModel(name: categoryName as String),
+          (categoryName) => HomeResponseModel(name: categoryName as String),
         ),
       ),
     );
   }
 
-  final List<CategoryResponseModel> categories;
+  final List<HomeResponseModel> categories;
 }
