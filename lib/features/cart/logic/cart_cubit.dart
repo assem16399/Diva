@@ -34,4 +34,19 @@ class CartCubit extends Cubit<CartState<CartModel>> {
       },
     );
   }
+
+  void placeOrder() {
+    emit(
+      CartState.cartSuccess(
+        CartModel(
+          cartBasicData: CartResponseModel(
+            products: [],
+            id: 5,
+            date: DateTime.now().toIso8601String(),
+          ),
+          cartProducts: [],
+        ),
+      ),
+    );
+  }
 }

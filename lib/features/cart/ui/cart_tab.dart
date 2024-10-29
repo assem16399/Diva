@@ -1,13 +1,17 @@
 import 'package:diva/core/di/dependency_injection.dart';
+import 'package:diva/core/helpers/extensions.dart';
 import 'package:diva/core/helpers/spacing.dart';
+import 'package:diva/core/routing/routes.dart';
 import 'package:diva/core/themes/colors.dart';
 import 'package:diva/core/themes/text_styles.dart';
 import 'package:diva/core/widgets/app_text_button.dart';
+import 'package:diva/core/widgets/success_dialog.dart';
 import 'package:diva/features/cart/data/models/cart_model.dart';
 import 'package:diva/features/cart/logic/cart_cubit.dart';
 import 'package:diva/features/cart/logic/cart_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:lottie/lottie.dart';
 
 class CartTab extends StatelessWidget {
   const CartTab({super.key, this.hasScaffold = false});
@@ -44,125 +48,156 @@ class CartTabBody extends StatelessWidget {
               cartLoading: () => const Center(
                 child: CircularProgressIndicator.adaptive(),
               ),
-              cartSuccess: (cartModel) => Column(
-                children: [
-                  Expanded(
-                    child: ListView.separated(
-                      itemCount: cartModel.cartProducts.length,
-                      separatorBuilder: (context, index) => verticalSpace(10),
-                      itemBuilder: (context, index) {
-                        return Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(13),
-                            border: Border.all(
-                              width: 2,
-                              color: ColorsManager.mainDeepPink,
-                            ),
-                          ),
-                          padding: const EdgeInsets.symmetric(horizontal: 12),
-                          height: 112,
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 87,
-                                width: 77,
-                                margin: const EdgeInsets.symmetric(
-                                  vertical: 10,
-                                ),
+              cartSuccess: (cartModel) => cartModel.cartProducts.isEmpty
+                  ? Center(
+                      child: Lottie.asset('assets/empty-state.json'),
+                    )
+                  : Column(
+                      children: [
+                        Expanded(
+                          child: ListView.separated(
+                            itemCount: cartModel.cartProducts.length,
+                            separatorBuilder: (context, index) =>
+                                verticalSpace(10),
+                            itemBuilder: (context, index) {
+                              return Container(
                                 decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.all(
-                                    Radius.circular(11),
-                                  ),
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                        cartModel.cartProducts[index].image ??
-                                            ''),
-                                    fit: BoxFit.cover,
+                                  borderRadius: BorderRadius.circular(13),
+                                  border: Border.all(
+                                    width: 2,
+                                    color: ColorsManager.mainDeepPink,
                                   ),
                                 ),
-                              ),
-                              horizontalSpace(12),
-                              Expanded(
-                                child: Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 8),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text(
-                                        cartModel.cartProducts[index].title ??
-                                            '',
-                                        style: TextStyles.font16BlackW400,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 12),
+                                height: 112,
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      height: 87,
+                                      width: 77,
+                                      margin: const EdgeInsets.symmetric(
+                                        vertical: 10,
                                       ),
-                                      Text(
-                                        '${cartModel.cartProducts[index].price} '
-                                        'L.E',
-                                        style: TextStyles.font16BlackW600,
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
-                                        children: [
-                                          QuantityManipulationButton(
-                                            cartModel: cartModel,
-                                            index: index,
+                                      decoration: BoxDecoration(
+                                        borderRadius: const BorderRadius.all(
+                                          Radius.circular(11),
+                                        ),
+                                        image: DecorationImage(
+                                          image: NetworkImage(
+                                            cartModel.cartProducts[index]
+                                                    .image ??
+                                                '',
                                           ),
-                                          GestureDetector(
-                                            onTap: () {},
-                                            child: Text(
-                                              'Edit',
-                                              style: TextStyles
-                                                  .font12BlackHalfOpacityW400
-                                                  .copyWith(
-                                                decorationStyle:
-                                                    TextDecorationStyle.solid,
-                                                decoration:
-                                                    TextDecoration.underline,
-                                              ),
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                    horizontalSpace(12),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 8),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              cartModel.cartProducts[index]
+                                                      .title ??
+                                                  '',
+                                              style: TextStyles.font16BlackW400,
+                                              maxLines: 1,
+                                              overflow: TextOverflow.ellipsis,
                                             ),
-                                          ),
-                                        ],
+                                            Text(
+                                              '${cartModel.cartProducts[index].price} '
+                                              'L.E',
+                                              style: TextStyles.font16BlackW600,
+                                            ),
+                                            Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.end,
+                                              children: [
+                                                QuantityManipulationButton(
+                                                  cartModel: cartModel,
+                                                  index: index,
+                                                ),
+                                                GestureDetector(
+                                                  onTap: () {
+                                                    context.pushNamed(
+                                                      Routes.productDetails,
+                                                      arguments: cartModel
+                                                          .cartProducts[index]
+                                                          .id,
+                                                    );
+                                                  },
+                                                  child: Text(
+                                                    'Edit',
+                                                    style: TextStyles
+                                                        .font12BlackHalfOpacityW400
+                                                        .copyWith(
+                                                      decorationStyle:
+                                                          TextDecorationStyle
+                                                              .solid,
+                                                      decoration: TextDecoration
+                                                          .underline,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                            ],
+                              );
+                            },
                           ),
-                        );
-                      },
+                        ),
+                        verticalSpace(24),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Total',
+                              style: TextStyles.font16BlackW600,
+                            ),
+                            const Spacer(),
+                            Text(
+                              '${cartModel.totalAmount} L.E',
+                              style: TextStyles.font16BlackW400,
+                            ),
+                          ],
+                        ),
+                        verticalSpace(24),
+                        AppTextButton(
+                          buttonText: 'Place order',
+                          textStyle: TextStyles.font20WhiteW600,
+                          onPressed: () {
+                            context.read<CartCubit>().placeOrder();
+                            showAdaptiveDialog<dynamic>(
+                              context: context,
+                              builder: (context) => SuccessDialog(
+                                title: 'Order Placed',
+                                content:
+                                    'Your order has been placed successfully',
+                                onActionPressed: () {
+                                  context.pop();
+                                },
+                              ),
+                            );
+                          },
+                        ),
+                      ],
                     ),
-                  ),
-                  verticalSpace(24),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Total',
-                        style: TextStyles.font16BlackW600,
-                      ),
-                      const Spacer(),
-                      Text(
-                        '${cartModel.totalAmount} L.E',
-                        style: TextStyles.font16BlackW400,
-                      ),
-                    ],
-                  ),
-                  verticalSpace(24),
-                  AppTextButton(
-                    buttonText: 'Place order',
-                    textStyle: TextStyles.font20WhiteW600,
-                    onPressed: () {},
-                  ),
-                ],
-              ),
               cartError: Text.new,
             );
           },
