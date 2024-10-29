@@ -106,18 +106,16 @@ class HomeScreenCubit extends Cubit<HomeScreenState> with EventBusMixin {
                   product));
         }
 
-        emit(state.copyWith(
+        emit(
+          state.copyWith(
+            wishlistToggleState: WishlistToggleState.loaded(
+                wishlist: wishlistAfterToggling, productId: product.id),
+            event: HomeStateEvent.toggleWishlistItem,
             wishlistDataState:
                 HomeDataState<List<HomeProductResponseModel>>.loaded(
               data: wishlistAfterToggling,
             ),
-            event: HomeStateEvent.toggleWishlistItem));
-
-        emit(
-          state.copyWith(
-              wishlistToggleState: WishlistToggleState.loaded(
-                  wishlist: wishlistAfterToggling, productId: product.id),
-              event: HomeStateEvent.toggleWishlistItem),
+          ),
         );
 
         shareEvent(

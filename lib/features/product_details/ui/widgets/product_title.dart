@@ -14,6 +14,8 @@ class ProductTitle extends StatelessWidget {
     return Text(
       title,
       style: TextStyles.font16DarkGrayWithTransparencyW400,
+      maxLines: 2,
+      overflow: TextOverflow.ellipsis,
     );
   }
 }
