@@ -1,6 +1,6 @@
 import 'package:diva/core/helpers/app_regex.dart';
 import 'package:diva/core/helpers/spacing.dart';
-import 'package:diva/core/themes/styles.dart';
+import 'package:diva/core/themes/text_styles.dart';
 import 'package:diva/core/widgets/app_text_form_field.dart';
 import 'package:diva/core/widgets/my_text_button.dart';
 import 'package:diva/core/widgets/obscured_text_form_field.dart';
