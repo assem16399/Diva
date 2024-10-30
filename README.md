@@ -1,6 +1,7 @@
 
-# Demo
+# App
 
+![Divaaa](https://github.com/user-attachments/assets/c4310294-5ab0-42e6-b575-b1b92a243ca8)
 
 
 # Requirements:
@@ -21,10 +22,6 @@
   - Unit tests(Soon).
  
 # Diagrams
- - High-Level Diagram
-   ![High-Level Diagram]()
-
-
     
 - Low-Level Diagram - Simplified clean architecture
   ![Simplified clean architecture](![Screenshot 2024-09-27 at 2 21 41 PM](https://github.com/user-attachments/assets/d985a0d3-7476-445d-aa63-0f55519423a1))
